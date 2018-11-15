@@ -1,0 +1,13 @@
+book_filename: "CAMH-Rstats"
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true
+new_session: yes
+rmd_files: [
+  "index.Rmd",
+  "01-import-your-data.Rmd",
+  "02-know-your-data.Rmd",
+  "03-linear-models.Rmd"
+]
+output_dir: "docs"

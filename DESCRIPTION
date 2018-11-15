@@ -1,0 +1,9 @@
+Package: placeholder
+Type: Book
+Title: CAMH R-stats
+Version: 0.0.1
+Imports: 
+  bookdown,
+  tidyverse,
+  broom
+Remotes: rstudio/bookdown

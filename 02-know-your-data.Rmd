@@ -1,0 +1,299 @@
+# Explore Data with R
+
+## Getting Started
+
+We will be using these three datasets for the analysis today..
+Please download the following files:
+
+1. [messy_demographic.csv](data/messy_demographic.csv) 
+2. [messy_cognitive.csv](data/messy_cognitive.csv)
+3. [messy_genotype.csv](data/messy_genotype.csv)
+
+----
+
+
+In this lesson, we are going to start building figures and table from our data. 
+
+We are going to do so inside an R - notebook, so we can write ourself a little tutorial/report as what we are finding as we go!!
+
+To write a report, we will make use of R-Markdown syntax. A cheatsheet for R Markdown Syntax is [here](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf).
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+We are also going to make heavy use of the "tidyverse" suite of packages. These packages include:
+
+* **ggplot2**: for plotting ([ggplot cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf))
+* **dplyr** & **tidyr**: for manipulating dataframes ([data Wrangling cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf))
+* **knitr**: for adding tables to our reports
+
+For more info on programming with the tidyverse I highly recommend the online book [R for data science](http://r4ds.had.co.nz/) by Garrett Grolemund & Hadley Wickham.
+
+### The packages for today
+
+```{r, warning=FALSE}
+library(tidyverse)
+```
+
+### reading in the data
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+data1 <-read_csv("data/messy_demographic.csv")
+data2 <- read_csv("data/messy_cognitive.csv")
+data3 <- read_csv("data/messy_genotype.csv")
+```
+
+```{r, eval=FALSE}
+data1 <- read_csv("~/Desktop/messy_demographic.csv")
+data2 <- read_csv("~/Desktop/messy_cognitive.csv")
+data3 <- read_csv("~/Desktop/messy_genotype.csv")
+```
+
+### copy and paste the cleaning code
+
+These are all the things we learned to do in [Intro to R]("{{site.root}}/workshops/intro-R").
+
+We are going to put them in one big chunk here.
+
+```{r}
+library(stringr)
+
+data1[data1==""] <- NA
+data1[data1=="missing"] <- NA
+data1[data1=="9999"] <- NA
+data1 <- data1 %>%
+  mutate(age = as.numeric(age),
+         ethnicity = factor(ethnicity),
+         sex = factor(sex, levels = c(0,1), 
+                      labels = c("Male", "Female")),
+         dx = factor(dx, levels = c(0,1), 
+                     labels = c("Control", "Case")))
+data2[data2==""] <- NA
+data2[data2=="missing"] <- NA
+data2[data2=="9999"] <- NA
+data2 <- data2 %>%
+  mutate(cog1 = as.numeric(cog1),
+         cog2 = as.numeric(cog2),
+         cog3 = as.numeric(cog3),
+         subject_ID = str_replace(subID, "subject", "SUB_")) %>%
+  select(subject_ID, cog1:cog3)
+data3[data3==""] <- NA
+data3[data3=="missing"] <- NA
+data3[data3=="9999"] <- NA
+data3 <- data3 %>%
+  mutate(genotype = factor(genotype,
+                           levels=c(0,1,2), 
+                           labels=c("AA","AG","GG")),
+         subject_ID = str_replace(subID, "subject", "SUB_")) %>%
+  select(-subID)
+alldata <- data1 %>%
+  inner_join(data2, by="subject_ID") %>%
+  inner_join(data3, by="subject_ID")
+```
+
+### Let's see what we have here
+
+We can use the summary function (from base R) to get an idea of what is in our dataset.
+
+`summary` will print some summary statistics for numeric variables are counts for our factors.
+
+```{r}
+summary(alldata)
+```
+
+## Using tableone to make Table 1 of your paper
+
+Table one is a cool package that creates the demogaphics table. 
+
+It takes four useful arguments
+ + **data**: the data to plot
+ + **vars**: the variables (from your data) to include in your table
+ + **factorVars**: a list of which variables (in vars) should be treated as factors
+ + **strata**: the name of a variable to split the table by.
+
+```{r}
+library(tableone)
+CreateTableOne(alldata,
+               vars = c("age", "sex",
+                        "genotype","ethnicity",
+                        "cog1", "cog2", "cog3"),
+               factorVars = c("sex", 
+                              "genotype","ethnicity"),
+               strata = "dx")
+```
+
+## Research Question 1 (two group comparison)
+
+#### Is performance on Cognitive Scale One (cog1) associated with Diagnosis (Dx)
+
+To test this statistically, we are going to run an independant samples t-test, using the base `t.test` function.
+
+When we call the t.test function, we are going to use "formula" notation. we're our dependant variable goes on the left side of a `~` and the predictors go to the right
+i.e. `y ~ x`.
+
+```{r}
+t.test(cog1 ~ dx, data = alldata)
+```
+
+One cool thing to remember about everything you do in R is that they generate useful objects we can save. 
+
+```{r}
+my_ttest_result <- t.test(cog1 ~ dx, data = alldata)
+my_ttest_result$p.value
+```
+
+### Plotting our result
+
+```{r, message=FALSE, warning=FALSE}
+library(ggplot2)
+ggplot(data = alldata, aes(x = dx, y = cog1)) +
+  geom_boxplot()
+```
+#### removing NA rows before plotting
+
+We can use tidyr's `drop_na` to remove rows with NA's in the `dx` column
+
+```{r, message=FALSE, warning=FALSE}
+alldata %>% 
+  drop_na(dx) %>%
+  ggplot(aes(x = dx, y = cog1, fill = dx)) +
+    geom_boxplot() 
+```
+
+#### Introducing the the dotplot geom
+
+`geom_dotplot` has to be one of my favs.. Let's use it in combination with `geom_boxplot`. 
+
+Let's also use the `labs()` call to relabel our axes with more descriptive titles. 
+
+Note: by setting `labs(x = NULL)` we are removing the word "dx" from the bottom of the plot
+
+```{r plot bit, fig.height=5, fig.width=7, message=FALSE, warning=FALSE}
+alldata %>% 
+  drop_na(dx) %>%
+  ggplot(aes(x = dx, y = cog1, fill = dx)) +
+    geom_dotplot(binaxis = "y", stackdir = "center") +
+    geom_boxplot(alpha = 0.5) +     # using "alpha" to make the box-plot semi-transparent
+    labs(x = NULL,                  #remove dx from the bottom
+         y = "Cognitive Score 1",   #add more desciptive title to y-axis
+         fill = "Diagnosis")        # change dx to Diagnosis in the legend
+```
+
+## pretty tables with dplyr
+
+In the section below we use two powerful tools from dplyr:
+
++ `summarise`: will calculate summary statistics, we are going to ask for three stats here:
+   + n_age: the number of valid (i.e. not NA) values for age
+   + mean_age: the mean for age (after removing NA values using the na.rm argument)
+   + sd_age: the standard deviation for age after removing the NA values
++ `group_by`: will split the data by the "grouping" variable(s) you input
+  + in this case we are asking for separate summary statistics for each diagnostic group, for each genotype
+  
+After calculating our summary table we are going to call `kable`, a function in the `knitr` package. That make the table appear nicer in our "knitted" report.
+
+*Note*: kable has some kewl optional arguments you can use to format you table further, such as `col.names`, `digits`, and `align`. Check out `?kable` for more info..
+
+
+```{r}
+table_2 <- alldata %>%
+  drop_na(dx) %>%
+  group_by(dx,genotype) %>%
+  summarise(n_age = sum(!is.na(age)), #the total number of observations that are NOT NA
+            mean_age = mean(age, na.rm = T),
+            sd_age = sd(age, na.rm = T))
+library(knitr)
+kable(table_2)
+```
+
+## use forcats to label risk_carriers
+
+When working with a genotype of interest, it's very common group participants into "carriers" and "non-carriers" of a risk-allele. In this dataset, our risk allele is the "G" genotype. We will create a new "risk_carrier" variable by combining levels of the genotype variable.
+
+Working with factors in R can be...annoying. Especially when we want to create new factors out of old factors. For this reason, the tidyverse includes a `forcats` package. That includes many function (all starting with `fct_`) for doing stuff to factors. We will use `fct_collapse` to combine the "GG" and "AG" genotype factors into a new "carrier" level in a new factor.
+
+```{r}
+library(forcats)
+alldata <- alldata %>%
+  mutate(risk_carrier = fct_collapse(genotype,
+                                     carrier = c("GG", "AG"),
+                                     non_carrier = "AA"))
+```
+
+## Make a simple scatter plot
+
+Let's use `geom_point()` and `geom_smooth`, together to create a scatter plot with a trendline.
+
+*Note:* to make the trendline straight, we use "method = lm" when calling geom_smooth().
+
+```{r, message=FALSE, warning=FALSE}
+alldata %>%
+  ggplot(aes(x = age, y = cog1)) +
+    geom_point() + 
+    geom_smooth(method = "lm") 
+```
+
+## Use plotting to show the age by risk carrier interaction
+
+When we add a new mapping of `color = risk_carrier` to the top line of our plot this mapping applies to *both* the points and the trendline. 
+
+*Note:* we are using `drop_na` to remove the NA as a category so that it does not occur as a third color in our plot.
+
+```{r, message=FALSE, warning=FALSE}
+alldata %>%
+  drop_na(risk_carrier) %>%
+  ggplot(aes(x = age, y = cog1, color = risk_carrier)) +
+    geom_point() + 
+    geom_smooth(method = "lm") 
+```
+
+We can use faceting to add and extra dimension - separate plots for male and female subjects.
+
+```{r, message=FALSE, warning=FALSE}
+alldata %>%
+  drop_na(risk_carrier,sex) %>%
+  ggplot(aes(x = age, y = cog1, color = risk_carrier)) +
+    geom_point() + 
+    geom_smooth(method = "lm") +
+    facet_wrap(~sex)
+```
+
+`facet_grid` will allow us to facet by TWO variables. In this case sex and dx.
+
+```{r, fig.height=8, fig.width=7, message=FALSE, warning=FALSE}
+alldata %>%
+  dplyr::filter(!is.na(risk_carrier), !is.na(sex), !is.na(dx)) %>%
+  ggplot(aes(x = age, y = cog1, color = risk_carrier)) +
+    geom_point() + 
+    geom_smooth(method = "lm") +
+    facet_grid(dx~sex)
+```
+
+## BONUS section - gather cognitive scores into one plot
+
+One things we want to do sometimes is to stack data from multiple columns in one column. The reason why this is useful, will hopefully become apparent in the next example.
+
+This "stacking" task (also refered to as "melting") is accomplished using `gather` from the `tidyr` package. `gather` creates two new columns from your data: "key" and "value".
+ + **key**: a new column that will hold the old variable names from the gathered data
+ + **value**: a new column that will hold the data values
+
+After the **key** and **value** arguments. We can tell `gather` what colums we want to stack using the same syntax used by dplyr's `select()`. In this example, we tell it we want to gather our three cognitive scales using `starts_with()`.
+
+```{r}
+library(tidyr)
+alldata %>% 
+  gather(cog_scale, cognitive_score, starts_with("cog"))
+```
+
+The beauty of gather is that it can be combined with other the rest of the tidyverse using the pipe. Let's feed out gathered result to ggplot.
+
+*Note:* using `scales = "free"` when faceting will force ggplot to draw a separate axis for each subplot (by default, `scales = "fixed"`, meaning that the same axes are drawn for each plot).
+
+```{r, fig.height=4, fig.width=10, message=FALSE, warning=FALSE}
+alldata %>%
+  gather(cog_scale, cognitive_score, starts_with("cog")) %>%
+  drop_na(risk_carrier, dx) %>%
+  ggplot(aes(x = age, y = cognitive_score, color = risk_carrier)) +
+    geom_point() + 
+    geom_smooth(method = "lm") +
+    facet_wrap(~cog_scale, scales = "free")  
+```
