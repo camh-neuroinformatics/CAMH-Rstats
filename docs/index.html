@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CAMH R-stats Workshops</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="CAMH R-stats Workshops" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="camh-neuroinformatics/CAMH-Rstats" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="CAMH R-stats Workshops" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Erin Dickie">
+
+
+<meta name="date" content="2018-11-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+<link rel="next" href="importing-data-into-r.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">CAMH R-stats Workshop Materials</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#rstudio-environment"><i class="fa fa-check"></i><b>1.1</b> RStudio environment</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#loading-libraries-installing-packages"><i class="fa fa-check"></i><b>1.2</b> Loading libraries / installing packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html"><i class="fa fa-check"></i><b>2</b> Importing Data into R</a><ul>
+<li class="chapter" data-level="2.1" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#read-in-data"><i class="fa fa-check"></i><b>2.1</b> Read in data</a></li>
+<li class="chapter" data-level="2.2" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#basic-data-summaries-and-visualization-head-tail-describe"><i class="fa fa-check"></i><b>2.2</b> Basic data summaries and visualization ( head, tail, describe() )</a></li>
+<li class="chapter" data-level="2.3" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#data-cleaning"><i class="fa fa-check"></i><b>2.3</b> Data cleaning</a></li>
+<li class="chapter" data-level="2.4" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#merging-data-frames"><i class="fa fa-check"></i><b>2.4</b> Merging data frames</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#first-we-need-to-make-sure-that-the-values-in-these-columns-are-the-same"><i class="fa fa-check"></i><b>2.4.1</b> First we need to make sure that the values in these columns are the same</a></li>
+<li class="chapter" data-level="2.4.2" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#study-question-1-what-is-the-relationship-between-sex-and-diagnosis"><i class="fa fa-check"></i><b>2.4.2</b> STUDY QUESTION 1: What is the relationship between sex and diagnosis?</a></li>
+<li class="chapter" data-level="2.4.3" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#study-question-2-what-is-the-relationship-between-diagnosis-and-cog1"><i class="fa fa-check"></i><b>2.4.3</b> STUDY QUESTION 2: What is the relationship between diagnosis and cog1?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html"><i class="fa fa-check"></i><b>3</b> Explore Data with R</a><ul>
+<li class="chapter" data-level="3.1" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#getting-started"><i class="fa fa-check"></i><b>3.1</b> Getting Started</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#the-packages-for-today"><i class="fa fa-check"></i><b>3.1.1</b> The packages for today</a></li>
+<li class="chapter" data-level="3.1.2" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#reading-in-the-data"><i class="fa fa-check"></i><b>3.1.2</b> reading in the data</a></li>
+<li class="chapter" data-level="3.1.3" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#copy-and-paste-the-cleaning-code"><i class="fa fa-check"></i><b>3.1.3</b> copy and paste the cleaning code</a></li>
+<li class="chapter" data-level="3.1.4" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#lets-see-what-we-have-here"><i class="fa fa-check"></i><b>3.1.4</b> Let’s see what we have here</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#using-tableone-to-make-table-1-of-your-paper"><i class="fa fa-check"></i><b>3.2</b> Using tableone to make Table 1 of your paper</a></li>
+<li class="chapter" data-level="3.3" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#research-question-1-two-group-comparison"><i class="fa fa-check"></i><b>3.3</b> Research Question 1 (two group comparison)</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#plotting-our-result"><i class="fa fa-check"></i><b>3.3.1</b> Plotting our result</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#pretty-tables-with-dplyr"><i class="fa fa-check"></i><b>3.4</b> pretty tables with dplyr</a></li>
+<li class="chapter" data-level="3.5" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#use-forcats-to-label-risk_carriers"><i class="fa fa-check"></i><b>3.5</b> use forcats to label risk_carriers</a></li>
+<li class="chapter" data-level="3.6" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#make-a-simple-scatter-plot"><i class="fa fa-check"></i><b>3.6</b> Make a simple scatter plot</a></li>
+<li class="chapter" data-level="3.7" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#use-plotting-to-show-the-age-by-risk-carrier-interaction"><i class="fa fa-check"></i><b>3.7</b> Use plotting to show the age by risk carrier interaction</a></li>
+<li class="chapter" data-level="3.8" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#bonus-section---gather-cognitive-scores-into-one-plot"><i class="fa fa-check"></i><b>3.8</b> BONUS section - gather cognitive scores into one plot</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="stats-linear-models.html"><a href="stats-linear-models.html"><i class="fa fa-check"></i><b>4</b> Stats (Linear Models)</a><ul>
+<li class="chapter" data-level="4.1" data-path="stats-linear-models.html"><a href="stats-linear-models.html#set-up-running-intro-to-r-commands"><i class="fa fa-check"></i><b>4.1</b> Set up (Running Intro to R commands)</a></li>
+<li class="chapter" data-level="4.2" data-path="stats-linear-models.html"><a href="stats-linear-models.html#a-very-fast-stats-refresher"><i class="fa fa-check"></i><b>4.2</b> A very fast stats refresher!!</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="stats-linear-models.html"><a href="stats-linear-models.html#what-stat-function-do-i-need"><i class="fa fa-check"></i><b>4.2.1</b> what stat function do I need??</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="stats-linear-models.html"><a href="stats-linear-models.html#looking-at-cognition-2-vs-age"><i class="fa fa-check"></i><b>4.3</b> Looking at Cognition 2 vs Age</a></li>
+<li class="chapter" data-level="4.4" data-path="stats-linear-models.html"><a href="stats-linear-models.html#using-broom-to-saveorganize-model-fit-numbers"><i class="fa fa-check"></i><b>4.4</b> Using <code>broom</code> to save/organize model fit numbers</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="stats-linear-models.html"><a href="stats-linear-models.html#augment-grabs-residuals-and-predicted-values"><i class="fa fa-check"></i><b>4.4.1</b> <code>augment</code> grabs residuals and predicted values</a></li>
+<li class="chapter" data-level="4.4.2" data-path="stats-linear-models.html"><a href="stats-linear-models.html#tidy-grabs-to-middle-table-betas-and-t-stats"><i class="fa fa-check"></i><b>4.4.2</b> <code>tidy</code> grabs to middle table (beta’s and t-stats)</a></li>
+<li class="chapter" data-level="4.4.3" data-path="stats-linear-models.html"><a href="stats-linear-models.html#glance-grabs-to-full-model-stats"><i class="fa fa-check"></i><b>4.4.3</b> <code>glance</code> grabs to full model stats</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="stats-linear-models.html"><a href="stats-linear-models.html#example-printing-our-formatted-t"><i class="fa fa-check"></i><b>4.5</b> Example: printing our formatted t</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="stats-linear-models.html"><a href="stats-linear-models.html#now-that-things-are-nicely-organized-we-can-built-tables-for-our-publications-compare-across-models-and-print-results-to-our-report"><i class="fa fa-check"></i><b>4.5.1</b> now that things are nicely organized we can built tables for our publications, compare across models, and print results to our report</a></li>
+<li class="chapter" data-level="4.5.2" data-path="stats-linear-models.html"><a href="stats-linear-models.html#printing-a-result-to-our-report"><i class="fa fa-check"></i><b>4.5.2</b> Printing a result to our report</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="stats-linear-models.html"><a href="stats-linear-models.html#plotting-distributions"><i class="fa fa-check"></i><b>4.6</b> plotting distributions</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="stats-linear-models.html"><a href="stats-linear-models.html#using-ggplot-to-plot-a-histogram-of-cognition-score-1"><i class="fa fa-check"></i><b>4.6.1</b> Using ggplot to plot a histogram of cognition score 1</a></li>
+<li class="chapter" data-level="4.6.2" data-path="stats-linear-models.html"><a href="stats-linear-models.html#using-a-combination-of-gather-and-ggplot-to-plot-all-three-scores-in-one-plot"><i class="fa fa-check"></i><b>4.6.2</b> Using a combination of “gather” and ggplot to plot all three scores in one plot</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="stats-linear-models.html"><a href="stats-linear-models.html#transforming-variables-to-normal"><i class="fa fa-check"></i><b>4.7</b> Transforming variables to “normal”</a></li>
+<li class="chapter" data-level="4.8" data-path="stats-linear-models.html"><a href="stats-linear-models.html#using-power-transform-from-the-car-library"><i class="fa fa-check"></i><b>4.8</b> Using “power transform” from the <code>car</code> library</a></li>
+<li class="chapter" data-level="4.9" data-path="stats-linear-models.html"><a href="stats-linear-models.html#recodeding-our-genotype-into-risk-allele-carriers-vs-non-carriers"><i class="fa fa-check"></i><b>4.9</b> Recodeding our genotype into risk-allele carriers vs non-carriers</a></li>
+<li class="chapter" data-level="4.10" data-path="stats-linear-models.html"><a href="stats-linear-models.html#investigating-interactions"><i class="fa fa-check"></i><b>4.10</b> Investigating Interactions</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="stats-linear-models.html"><a href="stats-linear-models.html#fitting-our-data-with-an-age-by-risk-carrier-interaction"><i class="fa fa-check"></i><b>4.10.1</b> fitting our data with an age by risk-carrier interaction</a></li>
+<li class="chapter" data-level="4.10.2" data-path="stats-linear-models.html"><a href="stats-linear-models.html#plotting-all-three-cognitve-variables-at-once"><i class="fa fa-check"></i><b>4.10.2</b> Plotting all three cognitve variables at once!</a></li>
+<li class="chapter" data-level="4.10.3" data-path="stats-linear-models.html"><a href="stats-linear-models.html#running-our-linear-model-on-all-three-cognitive-variables-at-once"><i class="fa fa-check"></i><b>4.10.3</b> Running our linear model on all three cognitive variables at once!</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="stats-linear-models.html"><a href="stats-linear-models.html#use-p.adjust-to-correct-for-multiple-comparisons"><i class="fa fa-check"></i><b>4.11</b> use p.adjust to correct for multiple comparisons</a></li>
+<li class="chapter" data-level="4.12" data-path="stats-linear-models.html"><a href="stats-linear-models.html#bonus-section-using-rms-to-get-more-details"><i class="fa fa-check"></i><b>4.12</b> BONUS SECTION: using <code>rms</code> to get more details</a></li>
+<li class="chapter" data-level="4.13" data-path="stats-linear-models.html"><a href="stats-linear-models.html#ols-gets-more-powerful-as-the-model-gets-more-complicated"><i class="fa fa-check"></i><b>4.13</b> ols gets more powerful as the model get’s more complicated</a></li>
+<li class="chapter" data-level="4.14" data-path="stats-linear-models.html"><a href="stats-linear-models.html#bonus-section-2---the-right-way-to-plot."><i class="fa fa-check"></i><b>4.14</b> BONUS SECTION 2 - the “right” way to plot….</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CAMH R-stats Workshops</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">CAMH R-stats Workshops</h1>
+<h4 class="author"><em>Erin Dickie</em></h4>
+<h4 class="date"><em>2018-11-15</em></h4>
+</div>
+<div id="prerequisites" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Prerequisites</h1>
+<p>Please have these both installed (come early if you need help):</p>
+<ul>
+<li><strong>R</strong>: <a href="https://cran.r-project.org/">Download from here</a></li>
+<li><strong>rstudio</strong>: <a href="https://www.rstudio.com/products/RStudio/#Desktop">Download from here</a></li>
+</ul>
+<p>Also, please install here awesome R packages (again, if you don’t know how please come early):</p>
+<ul>
+<li><code>rms</code></li>
+<li><code>tidyverse</code></li>
+</ul>
+<hr />
+<p>This book works from the following files of fake clinical data, that can be downloaded from the following links:</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://raw.githubusercontent.com/CAMH-SCWG/example-party/master/messy_data/messy_demographic.csv">messy_demographic.csv</a></li>
+<li><a href="https://raw.githubusercontent.com/CAMH-SCWG/example-party/master/messy_data/messy_cognitive.csv">messy_cognitive.csv</a></li>
+<li><a href="https://raw.githubusercontent.com/CAMH-SCWG/example-party/master/messy_data/messy_cognitive.csv">messy_cognitive.csv</a></li>
+</ol>
+<hr />
+<div id="rstudio-environment" class="section level2">
+<h2><span class="header-section-number">1.1</span> RStudio environment</h2>
+<p>Welcome to R studio! You should see 4 spaces:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Source</strong></li>
+</ol>
+<ul>
+<li>Your script! everything you do to your data should be typed here!! It saves what you are doing in a file ending in ‘.R’</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Console</strong></li>
+</ol>
+<ul>
+<li>The place where the good stuff happens. When you run a command, you see the output here.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Enviroment/History</strong></li>
+</ol>
+<ul>
+<li>Enviroment: a list of everything in your “Workspace”</li>
+<li>History: a list of every command you have run</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Files/Plots/Packages/Help</strong></li>
+</ol>
+<ul>
+<li>Files: a file browser (like windows Explorer)</li>
+<li>Plots: your plots will show up here</li>
+<li>Packages: a list of all the packages you have installed with checkboxes showing if it is loaded</li>
+<li>Help: your help documentation with be shown here.</li>
+</ul>
+<hr />
+</div>
+<div id="loading-libraries-installing-packages" class="section level2">
+<h2><span class="header-section-number">1.2</span> Loading libraries / installing packages</h2>
+<p>for this tutorial, we are going to use the packages ggplot, rms and car.</p>
+<ul>
+<li>Look at the <strong>Packages Tab</strong></li>
+<li>Click on the check box to the left of “ggplot2”</li>
+<li>Notice that a bunch of lines start running in <strong>Console</strong> window to show you that the package is loading</li>
+<li>Go to the <strong>History Tab</strong> (top right corner)</li>
+<li>Notice that you should see lines starting in library(“rms”..) and library(“ggplot2”…) have just run</li>
+<li>Click on these lines to highlight them, then click on <strong>To Source</strong> at the top of the panel</li>
+<li>This moves the lines we just ran into our script so we can rerun this step tomorrow!</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<hr />
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="importing-data-into-r.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/camh-neuroinformatics/CAMH-Rstats/edit/master/index.Rmd",
+"text": "Edit"
+},
+"download": ["CAMH-Rstats.pdf"],
+"toc": {
+"collapse": "section"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+</body>
+
+</html>

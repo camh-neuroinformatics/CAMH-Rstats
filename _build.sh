@@ -2,7 +2,6 @@
 
 set -ev
 
-rm -r _book/
 rm -r _bookdown_files/
 
 Rscript -e "bookdown::render_book('index.Rmd')"

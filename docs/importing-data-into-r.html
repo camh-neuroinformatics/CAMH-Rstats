@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CAMH R-stats Workshops</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="CAMH R-stats Workshops" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="camh-neuroinformatics/CAMH-Rstats" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="CAMH R-stats Workshops" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Erin Dickie">
+
+
+<meta name="date" content="2018-11-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="explore-data-with-r.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">CAMH R-stats Workshop Materials</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#rstudio-environment"><i class="fa fa-check"></i><b>1.1</b> RStudio environment</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#loading-libraries-installing-packages"><i class="fa fa-check"></i><b>1.2</b> Loading libraries / installing packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html"><i class="fa fa-check"></i><b>2</b> Importing Data into R</a><ul>
+<li class="chapter" data-level="2.1" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#read-in-data"><i class="fa fa-check"></i><b>2.1</b> Read in data</a></li>
+<li class="chapter" data-level="2.2" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#basic-data-summaries-and-visualization-head-tail-describe"><i class="fa fa-check"></i><b>2.2</b> Basic data summaries and visualization ( head, tail, describe() )</a></li>
+<li class="chapter" data-level="2.3" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#data-cleaning"><i class="fa fa-check"></i><b>2.3</b> Data cleaning</a></li>
+<li class="chapter" data-level="2.4" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#merging-data-frames"><i class="fa fa-check"></i><b>2.4</b> Merging data frames</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#first-we-need-to-make-sure-that-the-values-in-these-columns-are-the-same"><i class="fa fa-check"></i><b>2.4.1</b> First we need to make sure that the values in these columns are the same</a></li>
+<li class="chapter" data-level="2.4.2" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#study-question-1-what-is-the-relationship-between-sex-and-diagnosis"><i class="fa fa-check"></i><b>2.4.2</b> STUDY QUESTION 1: What is the relationship between sex and diagnosis?</a></li>
+<li class="chapter" data-level="2.4.3" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#study-question-2-what-is-the-relationship-between-diagnosis-and-cog1"><i class="fa fa-check"></i><b>2.4.3</b> STUDY QUESTION 2: What is the relationship between diagnosis and cog1?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html"><i class="fa fa-check"></i><b>3</b> Explore Data with R</a><ul>
+<li class="chapter" data-level="3.1" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#getting-started"><i class="fa fa-check"></i><b>3.1</b> Getting Started</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#the-packages-for-today"><i class="fa fa-check"></i><b>3.1.1</b> The packages for today</a></li>
+<li class="chapter" data-level="3.1.2" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#reading-in-the-data"><i class="fa fa-check"></i><b>3.1.2</b> reading in the data</a></li>
+<li class="chapter" data-level="3.1.3" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#copy-and-paste-the-cleaning-code"><i class="fa fa-check"></i><b>3.1.3</b> copy and paste the cleaning code</a></li>
+<li class="chapter" data-level="3.1.4" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#lets-see-what-we-have-here"><i class="fa fa-check"></i><b>3.1.4</b> Let’s see what we have here</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#using-tableone-to-make-table-1-of-your-paper"><i class="fa fa-check"></i><b>3.2</b> Using tableone to make Table 1 of your paper</a></li>
+<li class="chapter" data-level="3.3" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#research-question-1-two-group-comparison"><i class="fa fa-check"></i><b>3.3</b> Research Question 1 (two group comparison)</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#plotting-our-result"><i class="fa fa-check"></i><b>3.3.1</b> Plotting our result</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#pretty-tables-with-dplyr"><i class="fa fa-check"></i><b>3.4</b> pretty tables with dplyr</a></li>
+<li class="chapter" data-level="3.5" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#use-forcats-to-label-risk_carriers"><i class="fa fa-check"></i><b>3.5</b> use forcats to label risk_carriers</a></li>
+<li class="chapter" data-level="3.6" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#make-a-simple-scatter-plot"><i class="fa fa-check"></i><b>3.6</b> Make a simple scatter plot</a></li>
+<li class="chapter" data-level="3.7" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#use-plotting-to-show-the-age-by-risk-carrier-interaction"><i class="fa fa-check"></i><b>3.7</b> Use plotting to show the age by risk carrier interaction</a></li>
+<li class="chapter" data-level="3.8" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#bonus-section---gather-cognitive-scores-into-one-plot"><i class="fa fa-check"></i><b>3.8</b> BONUS section - gather cognitive scores into one plot</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="stats-linear-models.html"><a href="stats-linear-models.html"><i class="fa fa-check"></i><b>4</b> Stats (Linear Models)</a><ul>
+<li class="chapter" data-level="4.1" data-path="stats-linear-models.html"><a href="stats-linear-models.html#set-up-running-intro-to-r-commands"><i class="fa fa-check"></i><b>4.1</b> Set up (Running Intro to R commands)</a></li>
+<li class="chapter" data-level="4.2" data-path="stats-linear-models.html"><a href="stats-linear-models.html#a-very-fast-stats-refresher"><i class="fa fa-check"></i><b>4.2</b> A very fast stats refresher!!</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="stats-linear-models.html"><a href="stats-linear-models.html#what-stat-function-do-i-need"><i class="fa fa-check"></i><b>4.2.1</b> what stat function do I need??</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="stats-linear-models.html"><a href="stats-linear-models.html#looking-at-cognition-2-vs-age"><i class="fa fa-check"></i><b>4.3</b> Looking at Cognition 2 vs Age</a></li>
+<li class="chapter" data-level="4.4" data-path="stats-linear-models.html"><a href="stats-linear-models.html#using-broom-to-saveorganize-model-fit-numbers"><i class="fa fa-check"></i><b>4.4</b> Using <code>broom</code> to save/organize model fit numbers</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="stats-linear-models.html"><a href="stats-linear-models.html#augment-grabs-residuals-and-predicted-values"><i class="fa fa-check"></i><b>4.4.1</b> <code>augment</code> grabs residuals and predicted values</a></li>
+<li class="chapter" data-level="4.4.2" data-path="stats-linear-models.html"><a href="stats-linear-models.html#tidy-grabs-to-middle-table-betas-and-t-stats"><i class="fa fa-check"></i><b>4.4.2</b> <code>tidy</code> grabs to middle table (beta’s and t-stats)</a></li>
+<li class="chapter" data-level="4.4.3" data-path="stats-linear-models.html"><a href="stats-linear-models.html#glance-grabs-to-full-model-stats"><i class="fa fa-check"></i><b>4.4.3</b> <code>glance</code> grabs to full model stats</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="stats-linear-models.html"><a href="stats-linear-models.html#example-printing-our-formatted-t"><i class="fa fa-check"></i><b>4.5</b> Example: printing our formatted t</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="stats-linear-models.html"><a href="stats-linear-models.html#now-that-things-are-nicely-organized-we-can-built-tables-for-our-publications-compare-across-models-and-print-results-to-our-report"><i class="fa fa-check"></i><b>4.5.1</b> now that things are nicely organized we can built tables for our publications, compare across models, and print results to our report</a></li>
+<li class="chapter" data-level="4.5.2" data-path="stats-linear-models.html"><a href="stats-linear-models.html#printing-a-result-to-our-report"><i class="fa fa-check"></i><b>4.5.2</b> Printing a result to our report</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="stats-linear-models.html"><a href="stats-linear-models.html#plotting-distributions"><i class="fa fa-check"></i><b>4.6</b> plotting distributions</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="stats-linear-models.html"><a href="stats-linear-models.html#using-ggplot-to-plot-a-histogram-of-cognition-score-1"><i class="fa fa-check"></i><b>4.6.1</b> Using ggplot to plot a histogram of cognition score 1</a></li>
+<li class="chapter" data-level="4.6.2" data-path="stats-linear-models.html"><a href="stats-linear-models.html#using-a-combination-of-gather-and-ggplot-to-plot-all-three-scores-in-one-plot"><i class="fa fa-check"></i><b>4.6.2</b> Using a combination of “gather” and ggplot to plot all three scores in one plot</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="stats-linear-models.html"><a href="stats-linear-models.html#transforming-variables-to-normal"><i class="fa fa-check"></i><b>4.7</b> Transforming variables to “normal”</a></li>
+<li class="chapter" data-level="4.8" data-path="stats-linear-models.html"><a href="stats-linear-models.html#using-power-transform-from-the-car-library"><i class="fa fa-check"></i><b>4.8</b> Using “power transform” from the <code>car</code> library</a></li>
+<li class="chapter" data-level="4.9" data-path="stats-linear-models.html"><a href="stats-linear-models.html#recodeding-our-genotype-into-risk-allele-carriers-vs-non-carriers"><i class="fa fa-check"></i><b>4.9</b> Recodeding our genotype into risk-allele carriers vs non-carriers</a></li>
+<li class="chapter" data-level="4.10" data-path="stats-linear-models.html"><a href="stats-linear-models.html#investigating-interactions"><i class="fa fa-check"></i><b>4.10</b> Investigating Interactions</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="stats-linear-models.html"><a href="stats-linear-models.html#fitting-our-data-with-an-age-by-risk-carrier-interaction"><i class="fa fa-check"></i><b>4.10.1</b> fitting our data with an age by risk-carrier interaction</a></li>
+<li class="chapter" data-level="4.10.2" data-path="stats-linear-models.html"><a href="stats-linear-models.html#plotting-all-three-cognitve-variables-at-once"><i class="fa fa-check"></i><b>4.10.2</b> Plotting all three cognitve variables at once!</a></li>
+<li class="chapter" data-level="4.10.3" data-path="stats-linear-models.html"><a href="stats-linear-models.html#running-our-linear-model-on-all-three-cognitive-variables-at-once"><i class="fa fa-check"></i><b>4.10.3</b> Running our linear model on all three cognitive variables at once!</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="stats-linear-models.html"><a href="stats-linear-models.html#use-p.adjust-to-correct-for-multiple-comparisons"><i class="fa fa-check"></i><b>4.11</b> use p.adjust to correct for multiple comparisons</a></li>
+<li class="chapter" data-level="4.12" data-path="stats-linear-models.html"><a href="stats-linear-models.html#bonus-section-using-rms-to-get-more-details"><i class="fa fa-check"></i><b>4.12</b> BONUS SECTION: using <code>rms</code> to get more details</a></li>
+<li class="chapter" data-level="4.13" data-path="stats-linear-models.html"><a href="stats-linear-models.html#ols-gets-more-powerful-as-the-model-gets-more-complicated"><i class="fa fa-check"></i><b>4.13</b> ols gets more powerful as the model get’s more complicated</a></li>
+<li class="chapter" data-level="4.14" data-path="stats-linear-models.html"><a href="stats-linear-models.html#bonus-section-2---the-right-way-to-plot."><i class="fa fa-check"></i><b>4.14</b> BONUS SECTION 2 - the “right” way to plot….</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CAMH R-stats Workshops</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="importing-data-into-r" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Importing Data into R</h1>
+<div id="read-in-data" class="section level2">
+<h2><span class="header-section-number">2.1</span> Read in data</h2>
+<p>The two datasets provided are as follows:</p>
+<ol style="list-style-type: decimal">
+<li><strong>messy_demographic.csv:</strong></li>
+</ol>
+<ul>
+<li>5 variables:
+<ul>
+<li>age, diagnosis (dx), ethnicity, sex, and subject identifier (subject_ID)</li>
+</ul></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>messy_cognitive.csv:</strong></li>
+</ol>
+<ul>
+<li>4 variables: +three cognitive scores (cog1, cog2, cog3), and subject identifier (subID)</li>
+</ul>
+<p>In order to view and manipulate this data in R, we need to <em>import</em> the data into our R workspace (the same as you would open a file in excel to edit it).</p>
+<p><em>Rstudio trick:</em></p>
+<ul>
+<li>Click on the <strong>Environment</strong> Tab, then click on <strong>Import Dataset</strong> –&gt; <strong>From text File</strong></li>
+<li>Navigate the browser window to the location of <em>messy_cognitive.csv</em> and click <strong>Open</strong></li>
+<li>This opens a text reader window: You see the raw text on the top and what R will read in (the data frame) at the bottom</li>
+<li>In my view, it looks like the R is not going to read in the first line as a header..to change this</li>
+<li>switch the <strong>Heading</strong> option on the right to <strong>yes</strong></li>
+<li>Click <strong>Import</strong></li>
+<li>Now, if you look at the <strong>Environment</strong> tab you should see that <em>data1</em> has been loaded into R, It has 350 rows (or observations) and 5 variables</li>
+<li>So that you do not have to type this again tomorrow - go to History, click on the line “data1 &lt;- read.csv(…)” and then click on <strong>To Source</strong></li>
+<li>Repeat this whole process for <em>messy_demographic.csv</em></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(readr)
+data1 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Downloads/messy_demographic.csv&quot;</span>)
+data2 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Downloads/messy_cognitive.csv&quot;</span>)</code></pre></div>
+<ul>
+<li>What you actually did was use the read.csv function… to find out more about this option you can type “?read.csv” in the Console</li>
+<li>This is the basic syntax of R functions: some.function(“stuff inside to do the function on”)</li>
+<li>The <em>help document</em> for the read.csv function is shown in the <strong>Help</strong> tab</li>
+</ul>
+<p>Now we have two <strong>“data frames”</strong> loaded into our workspace. They are called data1 and data2.</p>
+<hr />
+</div>
+<div id="basic-data-summaries-and-visualization-head-tail-describe" class="section level2">
+<h2><span class="header-section-number">2.2</span> Basic data summaries and visualization ( head, tail, describe() )</h2>
+<ul>
+<li>Now that we have the data loaded, how do we just look at it? The simplest way is with the “View” function within rstudio.</li>
+<li>In Enviroment tab. Click on the little spreadsheet to teh far right of the data1.csv row… this shows you your data in what looks like a spreadsheet - but you cannot edit it!</li>
+</ul>
+<p>To look at the top six rows of your data:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(data1)</code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##   subject_ID age     sex ethnicity dx   
+##   &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;
+## 1 SUB_1      43        0 Cauc      0    
+## 2 SUB_2      47        1 Cauc      1    
+## 3 SUB_3      69        1 Cauc      1    
+## 4 SUB_4      51        0 Cauc      1    
+## 5 SUB_5      52        1 Cauc      0    
+## 6 SUB_6      71        0 AA        1</code></pre>
+<p>To look at the bottom six rows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(data2)</code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+##   subID      cog1             cog2             cog3            
+##   &lt;chr&gt;      &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt;           
+## 1 subject345 10.5491439098318 29.0366805293698 50.0341778674542
+## 2 subject346 13.7560798734217 21.047620123942  11.2510017219872
+## 3 subject347 16.4949897425522 33.323511618334  2.42614834379569
+## 4 subject348 11.1612493587292 30.8723352333704 16.0049438698844
+## 5 subject349 15.3654440645612 29.7598065423247 44.3994545119479
+## 6 subject350 13.993297479479  28.3229119000634 11.2012255384154</code></pre>
+<p>Using the function names() tells us what all the variables in our dataframe are called.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(data1)</code></pre></div>
+<pre><code>## [1] &quot;subject_ID&quot; &quot;age&quot;        &quot;sex&quot;        &quot;ethnicity&quot;  &quot;dx&quot;</code></pre>
+<p>the ls() function does the same thing, except it returns the variables in alphabetical order</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>(data1)</code></pre></div>
+<pre><code>## [1] &quot;age&quot;        &quot;dx&quot;         &quot;ethnicity&quot;  &quot;sex&quot;        &quot;subject_ID&quot;</code></pre>
+<p>That was all nice, but we want to find out more about this data we can use “summary”</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(data1)</code></pre></div>
+<pre><code>##   subject_ID            age                 sex         
+##  Length:350         Length:350         Min.   :   0.00  
+##  Class :character   Class :character   1st Qu.:   0.00  
+##  Mode  :character   Mode  :character   Median :   1.00  
+##                                        Mean   :  29.44  
+##                                        3rd Qu.:   1.00  
+##                                        Max.   :9999.00  
+##                                        NA&#39;s   :3        
+##   ethnicity              dx           
+##  Length:350         Length:350        
+##  Class :character   Class :character  
+##  Mode  :character   Mode  :character  
+##                                       
+##                                       
+##                                       
+## </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(data2)</code></pre></div>
+<pre><code>##     subID               cog1               cog2          
+##  Length:350         Length:350         Length:350        
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character  
+##      cog3          
+##  Length:350        
+##  Class :character  
+##  Mode  :character</code></pre>
+<hr />
+</div>
+<div id="data-cleaning" class="section level2">
+<h2><span class="header-section-number">2.3</span> Data cleaning</h2>
+<ul>
+<li>Now that you have looked at your data - you might have noticed that there are a couple probems The RA that you have been working with have coded missing values in three different ways (“9999”, “missing”,and “NA”)</li>
+<li>We first need to set these all to NA - which R recognizes as missing value:</li>
+</ul>
+<p>The following will take all values in data1 that are equal to “”, “missing”, or “9999”, and code them as missing in a way that R understands:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data1[data1<span class="op">==</span><span class="st">&quot;&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
+data1[data1<span class="op">==</span><span class="st">&quot;missing&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
+data1[data1<span class="op">==</span><span class="st">&quot;9999&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></code></pre></div>
+<p>Because R is “smart”, it categorizes data types automatically when data are loaded. Before working with new data, especailly if it is real (i.e. messy), it is important to tell R what kind of data you are dealing with. This will be especially important when we discuss our statistical analyses… after all, R is statistical software.</p>
+<p>The following will correctly format our variables for analyses:</p>
+<ul>
+<li>age is a numeric variable</li>
+<li>ethicity is a discrete factor</li>
+<li>sex is a discrete factor</li>
+<li>diagnosis is a discrete factor</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data1<span class="op">$</span>age &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(data1<span class="op">$</span>age))
+data1<span class="op">$</span>ethnicity &lt;-<span class="st"> </span><span class="kw">factor</span>(data1<span class="op">$</span>ethnicity,<span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;Cauc&quot;</span>,<span class="st">&quot;AA&quot;</span>,<span class="st">&quot;As&quot;</span>,<span class="st">&quot;In&quot;</span>,<span class="st">&quot;Other&quot;</span>))
+data1<span class="op">$</span>sex &lt;-<span class="st"> </span><span class="kw">factor</span>(data1<span class="op">$</span>sex, <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>,<span class="st">&quot;Female&quot;</span>))
+data1<span class="op">$</span>dx &lt;-<span class="st"> </span><span class="kw">factor</span>(data1<span class="op">$</span>dx, <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Control&quot;</span>,<span class="st">&quot;Case&quot;</span>))</code></pre></div>
+<p>By indicating the levels of our factors, we have erased from R the memory that we once had values of “”, “9999”, and “missing” (which up until now R had no reason to assume were not observations).</p>
+<p>Let us now apply the same cleanup steps to our second data frame:</p>
+<p>Remove missing:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data2[data2<span class="op">==</span><span class="st">&quot;&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
+data2[data2<span class="op">==</span><span class="st">&quot;missing&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
+data2[data2<span class="op">==</span><span class="st">&quot;9999&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></code></pre></div>
+<p>Correctly format variables for analyses:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data2<span class="op">$</span>cog1 &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(data2<span class="op">$</span>cog1))
+data2<span class="op">$</span>cog2 &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(data2<span class="op">$</span>cog2))
+data2<span class="op">$</span>cog3 &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(data2<span class="op">$</span>cog3))</code></pre></div>
+<hr />
+</div>
+<div id="merging-data-frames" class="section level2">
+<h2><span class="header-section-number">2.4</span> Merging data frames</h2>
+<p>In order to analyze the effect of sex on diagnosis, or perform any other comparison across our data frames, we should merge them. If you remember only this and nothing else today, it will still have been worth your time.</p>
+<p>Conceptually, merging two data frames assumes that the rows in one correspond to rows in the other, even if they are not in the same order. In order to match up the correct rows between data frames we need to make sure that one column in each spreadsheet can act as a “key” (i.e. each row has a unique value in this key that is the same in both spreadsheets). In our case, we have one subject identifier column in each of our spreadsheets.</p>
+<div id="first-we-need-to-make-sure-that-the-values-in-these-columns-are-the-same" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> First we need to make sure that the values in these columns are the same</h3>
+<p>We are going to make use a package called <code>stringr</code>, which was built to help us manipulate “strings” (string is a computer science word of sets of characters).</p>
+<p><em>Note:</em> There are many ways to deal strings in r, too many ways in fact. <code>stringr</code> was created to make the commands working with strings more consistent so that your code will be easier for another person to read.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(stringr)
+data2<span class="op">$</span>subject_ID &lt;-<span class="st"> </span><span class="kw">str_replace</span>(data2<span class="op">$</span>subID,<span class="st">&quot;subject&quot;</span>,<span class="st">&quot;SUB_&quot;</span>)</code></pre></div>
+<p>We can then merge the two datasets by specifying their names (in order x,y) and then specifying which columns are to be used as the key to merging the two data frames (by.x and by.y):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+alldata &lt;-<span class="st"> </span><span class="kw">inner_join</span>(data1,data2,<span class="dt">by=</span><span class="st">&quot;subject_ID&quot;</span>)</code></pre></div>
+<p>Skipping ahead a little - now we can look at histograms of our numeric variables, just to see what we are dealing with:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(data2<span class="op">$</span>cog1)</code></pre></div>
+<p><img src="01-import-your-data_files/figure-html/plot-first-histograms-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(data2<span class="op">$</span>cog2)</code></pre></div>
+<p><img src="01-import-your-data_files/figure-html/plot-first-histograms-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(data2<span class="op">$</span>cog3)</code></pre></div>
+<p><img src="01-import-your-data_files/figure-html/plot-first-histograms-3.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(data1<span class="op">$</span>age)</code></pre></div>
+<p><img src="01-import-your-data_files/figure-html/plot-first-histograms-4.png" width="672" /></p>
+<p>Now that our data are loaded, cleaned, and merged, it is time to do some basic statistics!</p>
+<hr />
+</div>
+<div id="study-question-1-what-is-the-relationship-between-sex-and-diagnosis" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> STUDY QUESTION 1: What is the relationship between sex and diagnosis?</h3>
+<p><strong>For this question, our null hypothesis is that there is no difference in the number of males and females between our case and control diagnosis groups</strong></p>
+<p>The ftable() function will give us a 2 x 2 contingency table of the frequency of observations in each category. the formula syntax “y ~ x” is common in R!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ftable</span>(<span class="dt">data=</span>alldata,dx<span class="op">~</span>sex)</code></pre></div>
+<pre><code>##        dx Control Case
+## sex                   
+## Male           37   90
+## Female        127   86</code></pre>
+<p>We now want to save that table as an <em>object</em> called “dxXsex_table”:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dxXsex_table &lt;-<span class="st"> </span><span class="kw">ftable</span>(<span class="dt">data=</span>alldata,dx<span class="op">~</span>sex)</code></pre></div>
+<p>Now, in order to test our null hypothesis using a chi-squared test, we simply apply the chisq.test() function to that table:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(dxXsex_table)</code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+## 
+## data:  dxXsex_table
+## X-squared = 28.415, df = 1, p-value = 9.791e-08</code></pre>
+<p>Similarly, we can use the nonparametric Fisher test to get a more exact test statistic:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fisher.test</span>(dxXsex_table)</code></pre></div>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  dxXsex_table
+## p-value = 5.68e-08
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##  0.1686647 0.4567064
+## sample estimates:
+## odds ratio 
+##   0.279488</code></pre>
+<p><em>A bit more advanced!</em> This will accoplish the same thing as ftable(), except that here we are <em>indexing</em> our alldata dataframe with the R syntax [<row>,<column>]. the blank value for <row> tells R that we want all rows. The c(“dx”,“sex”) value for <columns> means we want to use the columns named “dx” and “sex”. the table() function knows to arrange these as a 2 x 2 contingency table.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(alldata[ ,<span class="kw">c</span>(<span class="st">&quot;dx&quot;</span>,<span class="st">&quot;sex&quot;</span>)])</code></pre></div>
+<pre><code>##          sex
+## dx        Male Female
+##   Control   37    127
+##   Case      90     86</code></pre>
+<hr />
+</div>
+<div id="study-question-2-what-is-the-relationship-between-diagnosis-and-cog1" class="section level3">
+<h3><span class="header-section-number">2.4.3</span> STUDY QUESTION 2: What is the relationship between diagnosis and cog1?</h3>
+<p><strong>for this question, our null hypothesis is that there is no difference in cog1 between our case and control diagnosis groups</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(cog1 <span class="op">~</span><span class="st"> </span>dx, <span class="dt">data=</span>alldata)</code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  cog1 by dx
+## t = -6.347, df = 334.92, p-value = 7.133e-10
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -2.871388 -1.512676
+## sample estimates:
+## mean in group Control    mean in group Case 
+##              9.940047             12.132079</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(alldata, <span class="kw">aes</span>(<span class="dt">x=</span>dx, <span class="dt">y=</span>cog1)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<pre><code>## Warning: Removed 5 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="01-import-your-data_files/figure-html/first-t-t-test-1.png" width="672" /></p>
+<hr />
+<p><strong><em>P.S.</em></strong>* Here is an R script with all of the steps we went over today!! <a href="https://github.com/CAMH-SCWG/example-party/data/clean.R">Download Intro R script</a> © 2018 GitHub, Inc. Terms Privacy Security Status Help Contact GitHub Pricing API Training Blog About</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="explore-data-with-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/camh-neuroinformatics/CAMH-Rstats/edit/master/01-import-your-data.Rmd",
+"text": "Edit"
+},
+"download": ["CAMH-Rstats.pdf"],
+"toc": {
+"collapse": "section"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+</body>
+
+</html>

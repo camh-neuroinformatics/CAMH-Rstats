@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CAMH R-stats Workshops</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="CAMH R-stats Workshops" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="camh-neuroinformatics/CAMH-Rstats" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="CAMH R-stats Workshops" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Erin Dickie">
+
+
+<meta name="date" content="2018-11-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="importing-data-into-r.html">
+<link rel="next" href="stats-linear-models.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">CAMH R-stats Workshop Materials</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#rstudio-environment"><i class="fa fa-check"></i><b>1.1</b> RStudio environment</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#loading-libraries-installing-packages"><i class="fa fa-check"></i><b>1.2</b> Loading libraries / installing packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html"><i class="fa fa-check"></i><b>2</b> Importing Data into R</a><ul>
+<li class="chapter" data-level="2.1" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#read-in-data"><i class="fa fa-check"></i><b>2.1</b> Read in data</a></li>
+<li class="chapter" data-level="2.2" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#basic-data-summaries-and-visualization-head-tail-describe"><i class="fa fa-check"></i><b>2.2</b> Basic data summaries and visualization ( head, tail, describe() )</a></li>
+<li class="chapter" data-level="2.3" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#data-cleaning"><i class="fa fa-check"></i><b>2.3</b> Data cleaning</a></li>
+<li class="chapter" data-level="2.4" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#merging-data-frames"><i class="fa fa-check"></i><b>2.4</b> Merging data frames</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#first-we-need-to-make-sure-that-the-values-in-these-columns-are-the-same"><i class="fa fa-check"></i><b>2.4.1</b> First we need to make sure that the values in these columns are the same</a></li>
+<li class="chapter" data-level="2.4.2" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#study-question-1-what-is-the-relationship-between-sex-and-diagnosis"><i class="fa fa-check"></i><b>2.4.2</b> STUDY QUESTION 1: What is the relationship between sex and diagnosis?</a></li>
+<li class="chapter" data-level="2.4.3" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#study-question-2-what-is-the-relationship-between-diagnosis-and-cog1"><i class="fa fa-check"></i><b>2.4.3</b> STUDY QUESTION 2: What is the relationship between diagnosis and cog1?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html"><i class="fa fa-check"></i><b>3</b> Explore Data with R</a><ul>
+<li class="chapter" data-level="3.1" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#getting-started"><i class="fa fa-check"></i><b>3.1</b> Getting Started</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#the-packages-for-today"><i class="fa fa-check"></i><b>3.1.1</b> The packages for today</a></li>
+<li class="chapter" data-level="3.1.2" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#reading-in-the-data"><i class="fa fa-check"></i><b>3.1.2</b> reading in the data</a></li>
+<li class="chapter" data-level="3.1.3" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#copy-and-paste-the-cleaning-code"><i class="fa fa-check"></i><b>3.1.3</b> copy and paste the cleaning code</a></li>
+<li class="chapter" data-level="3.1.4" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#lets-see-what-we-have-here"><i class="fa fa-check"></i><b>3.1.4</b> Let’s see what we have here</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#using-tableone-to-make-table-1-of-your-paper"><i class="fa fa-check"></i><b>3.2</b> Using tableone to make Table 1 of your paper</a></li>
+<li class="chapter" data-level="3.3" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#research-question-1-two-group-comparison"><i class="fa fa-check"></i><b>3.3</b> Research Question 1 (two group comparison)</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#plotting-our-result"><i class="fa fa-check"></i><b>3.3.1</b> Plotting our result</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#pretty-tables-with-dplyr"><i class="fa fa-check"></i><b>3.4</b> pretty tables with dplyr</a></li>
+<li class="chapter" data-level="3.5" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#use-forcats-to-label-risk_carriers"><i class="fa fa-check"></i><b>3.5</b> use forcats to label risk_carriers</a></li>
+<li class="chapter" data-level="3.6" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#make-a-simple-scatter-plot"><i class="fa fa-check"></i><b>3.6</b> Make a simple scatter plot</a></li>
+<li class="chapter" data-level="3.7" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#use-plotting-to-show-the-age-by-risk-carrier-interaction"><i class="fa fa-check"></i><b>3.7</b> Use plotting to show the age by risk carrier interaction</a></li>
+<li class="chapter" data-level="3.8" data-path="explore-data-with-r.html"><a href="explore-data-with-r.html#bonus-section---gather-cognitive-scores-into-one-plot"><i class="fa fa-check"></i><b>3.8</b> BONUS section - gather cognitive scores into one plot</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="stats-linear-models.html"><a href="stats-linear-models.html"><i class="fa fa-check"></i><b>4</b> Stats (Linear Models)</a><ul>
+<li class="chapter" data-level="4.1" data-path="stats-linear-models.html"><a href="stats-linear-models.html#set-up-running-intro-to-r-commands"><i class="fa fa-check"></i><b>4.1</b> Set up (Running Intro to R commands)</a></li>
+<li class="chapter" data-level="4.2" data-path="stats-linear-models.html"><a href="stats-linear-models.html#a-very-fast-stats-refresher"><i class="fa fa-check"></i><b>4.2</b> A very fast stats refresher!!</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="stats-linear-models.html"><a href="stats-linear-models.html#what-stat-function-do-i-need"><i class="fa fa-check"></i><b>4.2.1</b> what stat function do I need??</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="stats-linear-models.html"><a href="stats-linear-models.html#looking-at-cognition-2-vs-age"><i class="fa fa-check"></i><b>4.3</b> Looking at Cognition 2 vs Age</a></li>
+<li class="chapter" data-level="4.4" data-path="stats-linear-models.html"><a href="stats-linear-models.html#using-broom-to-saveorganize-model-fit-numbers"><i class="fa fa-check"></i><b>4.4</b> Using <code>broom</code> to save/organize model fit numbers</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="stats-linear-models.html"><a href="stats-linear-models.html#augment-grabs-residuals-and-predicted-values"><i class="fa fa-check"></i><b>4.4.1</b> <code>augment</code> grabs residuals and predicted values</a></li>
+<li class="chapter" data-level="4.4.2" data-path="stats-linear-models.html"><a href="stats-linear-models.html#tidy-grabs-to-middle-table-betas-and-t-stats"><i class="fa fa-check"></i><b>4.4.2</b> <code>tidy</code> grabs to middle table (beta’s and t-stats)</a></li>
+<li class="chapter" data-level="4.4.3" data-path="stats-linear-models.html"><a href="stats-linear-models.html#glance-grabs-to-full-model-stats"><i class="fa fa-check"></i><b>4.4.3</b> <code>glance</code> grabs to full model stats</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="stats-linear-models.html"><a href="stats-linear-models.html#example-printing-our-formatted-t"><i class="fa fa-check"></i><b>4.5</b> Example: printing our formatted t</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="stats-linear-models.html"><a href="stats-linear-models.html#now-that-things-are-nicely-organized-we-can-built-tables-for-our-publications-compare-across-models-and-print-results-to-our-report"><i class="fa fa-check"></i><b>4.5.1</b> now that things are nicely organized we can built tables for our publications, compare across models, and print results to our report</a></li>
+<li class="chapter" data-level="4.5.2" data-path="stats-linear-models.html"><a href="stats-linear-models.html#printing-a-result-to-our-report"><i class="fa fa-check"></i><b>4.5.2</b> Printing a result to our report</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="stats-linear-models.html"><a href="stats-linear-models.html#plotting-distributions"><i class="fa fa-check"></i><b>4.6</b> plotting distributions</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="stats-linear-models.html"><a href="stats-linear-models.html#using-ggplot-to-plot-a-histogram-of-cognition-score-1"><i class="fa fa-check"></i><b>4.6.1</b> Using ggplot to plot a histogram of cognition score 1</a></li>
+<li class="chapter" data-level="4.6.2" data-path="stats-linear-models.html"><a href="stats-linear-models.html#using-a-combination-of-gather-and-ggplot-to-plot-all-three-scores-in-one-plot"><i class="fa fa-check"></i><b>4.6.2</b> Using a combination of “gather” and ggplot to plot all three scores in one plot</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="stats-linear-models.html"><a href="stats-linear-models.html#transforming-variables-to-normal"><i class="fa fa-check"></i><b>4.7</b> Transforming variables to “normal”</a></li>
+<li class="chapter" data-level="4.8" data-path="stats-linear-models.html"><a href="stats-linear-models.html#using-power-transform-from-the-car-library"><i class="fa fa-check"></i><b>4.8</b> Using “power transform” from the <code>car</code> library</a></li>
+<li class="chapter" data-level="4.9" data-path="stats-linear-models.html"><a href="stats-linear-models.html#recodeding-our-genotype-into-risk-allele-carriers-vs-non-carriers"><i class="fa fa-check"></i><b>4.9</b> Recodeding our genotype into risk-allele carriers vs non-carriers</a></li>
+<li class="chapter" data-level="4.10" data-path="stats-linear-models.html"><a href="stats-linear-models.html#investigating-interactions"><i class="fa fa-check"></i><b>4.10</b> Investigating Interactions</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="stats-linear-models.html"><a href="stats-linear-models.html#fitting-our-data-with-an-age-by-risk-carrier-interaction"><i class="fa fa-check"></i><b>4.10.1</b> fitting our data with an age by risk-carrier interaction</a></li>
+<li class="chapter" data-level="4.10.2" data-path="stats-linear-models.html"><a href="stats-linear-models.html#plotting-all-three-cognitve-variables-at-once"><i class="fa fa-check"></i><b>4.10.2</b> Plotting all three cognitve variables at once!</a></li>
+<li class="chapter" data-level="4.10.3" data-path="stats-linear-models.html"><a href="stats-linear-models.html#running-our-linear-model-on-all-three-cognitive-variables-at-once"><i class="fa fa-check"></i><b>4.10.3</b> Running our linear model on all three cognitive variables at once!</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="stats-linear-models.html"><a href="stats-linear-models.html#use-p.adjust-to-correct-for-multiple-comparisons"><i class="fa fa-check"></i><b>4.11</b> use p.adjust to correct for multiple comparisons</a></li>
+<li class="chapter" data-level="4.12" data-path="stats-linear-models.html"><a href="stats-linear-models.html#bonus-section-using-rms-to-get-more-details"><i class="fa fa-check"></i><b>4.12</b> BONUS SECTION: using <code>rms</code> to get more details</a></li>
+<li class="chapter" data-level="4.13" data-path="stats-linear-models.html"><a href="stats-linear-models.html#ols-gets-more-powerful-as-the-model-gets-more-complicated"><i class="fa fa-check"></i><b>4.13</b> ols gets more powerful as the model get’s more complicated</a></li>
+<li class="chapter" data-level="4.14" data-path="stats-linear-models.html"><a href="stats-linear-models.html#bonus-section-2---the-right-way-to-plot."><i class="fa fa-check"></i><b>4.14</b> BONUS SECTION 2 - the “right” way to plot….</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CAMH R-stats Workshops</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="explore-data-with-r" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Explore Data with R</h1>
+<div id="getting-started" class="section level2">
+<h2><span class="header-section-number">3.1</span> Getting Started</h2>
+<p>We will be using these three datasets for the analysis today.. Please download the following files:</p>
+<ol style="list-style-type: decimal">
+<li><a href="data/messy_demographic.csv">messy_demographic.csv</a></li>
+<li><a href="data/messy_cognitive.csv">messy_cognitive.csv</a></li>
+<li><a href="data/messy_genotype.csv">messy_genotype.csv</a></li>
+</ol>
+<hr />
+<p>In this lesson, we are going to start building figures and table from our data.</p>
+<p>We are going to do so inside an R - notebook, so we can write ourself a little tutorial/report as what we are finding as we go!!</p>
+<p>To write a report, we will make use of R-Markdown syntax. A cheatsheet for R Markdown Syntax is <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">here</a>.</p>
+<p>Add a new chunk by clicking the <em>Insert Chunk</em> button on the toolbar or by pressing <em>Ctrl+Alt+I</em>.</p>
+<p>We are also going to make heavy use of the “tidyverse” suite of packages. These packages include:</p>
+<ul>
+<li><strong>ggplot2</strong>: for plotting (<a href="https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf">ggplot cheat sheet</a>)</li>
+<li><strong>dplyr</strong> &amp; <strong>tidyr</strong>: for manipulating dataframes (<a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">data Wrangling cheat sheet</a>)</li>
+<li><strong>knitr</strong>: for adding tables to our reports</li>
+</ul>
+<p>For more info on programming with the tidyverse I highly recommend the online book <a href="http://r4ds.had.co.nz/">R for data science</a> by Garrett Grolemund &amp; Hadley Wickham.</p>
+<div id="the-packages-for-today" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> The packages for today</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+</div>
+<div id="reading-in-the-data" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> reading in the data</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data1 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Desktop/messy_demographic.csv&quot;</span>)
+data2 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Desktop/messy_cognitive.csv&quot;</span>)
+data3 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Desktop/messy_genotype.csv&quot;</span>)</code></pre></div>
+</div>
+<div id="copy-and-paste-the-cleaning-code" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> copy and paste the cleaning code</h3>
+<p>These are all the things we learned to do in <a href="%22%7B%7Bsite.root%7D%7D/workshops/intro-R%22">Intro to R</a>.</p>
+<p>We are going to put them in one big chunk here.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(stringr)
+
+data1[data1<span class="op">==</span><span class="st">&quot;&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
+data1[data1<span class="op">==</span><span class="st">&quot;missing&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
+data1[data1<span class="op">==</span><span class="st">&quot;9999&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
+data1 &lt;-<span class="st"> </span>data1 <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">age =</span> <span class="kw">as.numeric</span>(age),
+         <span class="dt">ethnicity =</span> <span class="kw">factor</span>(ethnicity),
+         <span class="dt">sex =</span> <span class="kw">factor</span>(sex, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), 
+                      <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>)),
+         <span class="dt">dx =</span> <span class="kw">factor</span>(dx, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), 
+                     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Control&quot;</span>, <span class="st">&quot;Case&quot;</span>)))
+data2[data2<span class="op">==</span><span class="st">&quot;&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
+data2[data2<span class="op">==</span><span class="st">&quot;missing&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
+data2[data2<span class="op">==</span><span class="st">&quot;9999&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
+data2 &lt;-<span class="st"> </span>data2 <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cog1 =</span> <span class="kw">as.numeric</span>(cog1),
+         <span class="dt">cog2 =</span> <span class="kw">as.numeric</span>(cog2),
+         <span class="dt">cog3 =</span> <span class="kw">as.numeric</span>(cog3),
+         <span class="dt">subject_ID =</span> <span class="kw">str_replace</span>(subID, <span class="st">&quot;subject&quot;</span>, <span class="st">&quot;SUB_&quot;</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(subject_ID, cog1<span class="op">:</span>cog3)
+data3[data3<span class="op">==</span><span class="st">&quot;&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
+data3[data3<span class="op">==</span><span class="st">&quot;missing&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
+data3[data3<span class="op">==</span><span class="st">&quot;9999&quot;</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
+data3 &lt;-<span class="st"> </span>data3 <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">genotype =</span> <span class="kw">factor</span>(genotype,
+                           <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>), 
+                           <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;AA&quot;</span>,<span class="st">&quot;AG&quot;</span>,<span class="st">&quot;GG&quot;</span>)),
+         <span class="dt">subject_ID =</span> <span class="kw">str_replace</span>(subID, <span class="st">&quot;subject&quot;</span>, <span class="st">&quot;SUB_&quot;</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>subID)
+alldata &lt;-<span class="st"> </span>data1 <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">inner_join</span>(data2, <span class="dt">by=</span><span class="st">&quot;subject_ID&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">inner_join</span>(data3, <span class="dt">by=</span><span class="st">&quot;subject_ID&quot;</span>)</code></pre></div>
+</div>
+<div id="lets-see-what-we-have-here" class="section level3">
+<h3><span class="header-section-number">3.1.4</span> Let’s see what we have here</h3>
+<p>We can use the summary function (from base R) to get an idea of what is in our dataset.</p>
+<p><code>summary</code> will print some summary statistics for numeric variables are counts for our factors.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(alldata)</code></pre></div>
+<pre><code>##   subject_ID             age            sex      ethnicity         dx     
+##  Length:350         Min.   :22.00   Male  :130   AA   : 70   Control:166  
+##  Class :character   1st Qu.:43.00   Female:216   As   : 42   Case   :178  
+##  Mode  :character   Median :49.00   NA&#39;s  :  4   Cauc :196   NA&#39;s   :  6  
+##                     Mean   :50.38                In   : 19                
+##                     3rd Qu.:58.00                Other: 14                
+##                     Max.   :89.00                NA&#39;s :  9                
+##                     NA&#39;s   :8                                             
+##       cog1             cog2            cog3           genotype  
+##  Min.   : 2.868   Min.   :20.23   Min.   :  0.05796   AA  :103  
+##  1st Qu.: 8.783   1st Qu.:29.22   1st Qu.:  8.82092   AG  :145  
+##  Median :10.939   Median :31.36   Median : 19.79222   GG  : 94  
+##  Mean   :11.087   Mean   :31.66   Mean   : 25.04099   NA&#39;s:  8  
+##  3rd Qu.:12.964   3rd Qu.:34.03   3rd Qu.: 35.55916             
+##  Max.   :22.189   Max.   :44.74   Max.   :104.21326             
+##  NA&#39;s   :5        NA&#39;s   :5       NA&#39;s   :9</code></pre>
+</div>
+</div>
+<div id="using-tableone-to-make-table-1-of-your-paper" class="section level2">
+<h2><span class="header-section-number">3.2</span> Using tableone to make Table 1 of your paper</h2>
+<p>Table one is a cool package that creates the demogaphics table.</p>
+<p>It takes four useful arguments + <strong>data</strong>: the data to plot + <strong>vars</strong>: the variables (from your data) to include in your table + <strong>factorVars</strong>: a list of which variables (in vars) should be treated as factors + <strong>strata</strong>: the name of a variable to split the table by.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tableone)
+<span class="kw">CreateTableOne</span>(alldata,
+               <span class="dt">vars =</span> <span class="kw">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;sex&quot;</span>,
+                        <span class="st">&quot;genotype&quot;</span>,<span class="st">&quot;ethnicity&quot;</span>,
+                        <span class="st">&quot;cog1&quot;</span>, <span class="st">&quot;cog2&quot;</span>, <span class="st">&quot;cog3&quot;</span>),
+               <span class="dt">factorVars =</span> <span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>, 
+                              <span class="st">&quot;genotype&quot;</span>,<span class="st">&quot;ethnicity&quot;</span>),
+               <span class="dt">strata =</span> <span class="st">&quot;dx&quot;</span>)</code></pre></div>
+<pre><code>##                   Stratified by dx
+##                    Control       Case          p      test
+##   n                  166           178                    
+##   age (mean (sd))  50.42 (11.95) 50.57 (11.06)  0.905     
+##   sex = Female (%)   127 (77.4)     86 (48.9)  &lt;0.001     
+##   genotype (%)                                  0.371     
+##      AA               44 (27.2)     58 (33.1)             
+##      AG               68 (42.0)     73 (41.7)             
+##      GG               50 (30.9)     44 (25.1)             
+##   ethnicity (%)                                 0.523     
+##      AA               36 (22.4)     32 (18.4)             
+##      As               17 (10.6)     25 (14.4)             
+##      Cauc             92 (57.1)    100 (57.5)             
+##      In               11 ( 6.8)      8 ( 4.6)             
+##      Other             5 ( 3.1)      9 ( 5.2)             
+##   cog1 (mean (sd))  9.94 (2.91)  12.13 (3.44)  &lt;0.001     
+##   cog2 (mean (sd)) 31.55 (3.88)  31.78 (3.79)   0.573     
+##   cog3 (mean (sd)) 25.20 (21.76) 25.25 (20.39)  0.982</code></pre>
+</div>
+<div id="research-question-1-two-group-comparison" class="section level2">
+<h2><span class="header-section-number">3.3</span> Research Question 1 (two group comparison)</h2>
+<div id="is-performance-on-cognitive-scale-one-cog1-associated-with-diagnosis-dx" class="section level4">
+<h4><span class="header-section-number">3.3.0.1</span> Is performance on Cognitive Scale One (cog1) associated with Diagnosis (Dx)</h4>
+<p>To test this statistically, we are going to run an independant samples t-test, using the base <code>t.test</code> function.</p>
+<p>When we call the t.test function, we are going to use “formula” notation. we’re our dependant variable goes on the left side of a <code>~</code> and the predictors go to the right i.e. <code>y ~ x</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(cog1 <span class="op">~</span><span class="st"> </span>dx, <span class="dt">data =</span> alldata)</code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  cog1 by dx
+## t = -6.347, df = 334.92, p-value = 7.133e-10
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -2.871388 -1.512676
+## sample estimates:
+## mean in group Control    mean in group Case 
+##              9.940047             12.132079</code></pre>
+<p>One cool thing to remember about everything you do in R is that they generate useful objects we can save.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_ttest_result &lt;-<span class="st"> </span><span class="kw">t.test</span>(cog1 <span class="op">~</span><span class="st"> </span>dx, <span class="dt">data =</span> alldata)
+my_ttest_result<span class="op">$</span>p.value</code></pre></div>
+<pre><code>## [1] 7.13299e-10</code></pre>
+</div>
+<div id="plotting-our-result" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Plotting our result</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">ggplot</span>(<span class="dt">data =</span> alldata, <span class="kw">aes</span>(<span class="dt">x =</span> dx, <span class="dt">y =</span> cog1)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="02-know-your-data_files/figure-html/unnamed-chunk-9-1.png" width="672" /> #### removing NA rows before plotting</p>
+<p>We can use tidyr’s <code>drop_na</code> to remove rows with NA’s in the <code>dx</code> column</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alldata <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">drop_na</span>(dx) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> dx, <span class="dt">y =</span> cog1, <span class="dt">fill =</span> dx)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>() </code></pre></div>
+<p><img src="02-know-your-data_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div id="introducing-the-the-dotplot-geom" class="section level4">
+<h4><span class="header-section-number">3.3.1.1</span> Introducing the the dotplot geom</h4>
+<p><code>geom_dotplot</code> has to be one of my favs.. Let’s use it in combination with <code>geom_boxplot</code>.</p>
+<p>Let’s also use the <code>labs()</code> call to relabel our axes with more descriptive titles.</p>
+<p>Note: by setting <code>labs(x = NULL)</code> we are removing the word “dx” from the bottom of the plot</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alldata <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">drop_na</span>(dx) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> dx, <span class="dt">y =</span> cog1, <span class="dt">fill =</span> dx)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">stackdir =</span> <span class="st">&quot;center&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span><span class="st">     </span><span class="co"># using &quot;alpha&quot; to make the box-plot semi-transparent</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="ot">NULL</span>,                  <span class="co">#remove dx from the bottom</span>
+         <span class="dt">y =</span> <span class="st">&quot;Cognitive Score 1&quot;</span>,   <span class="co">#add more desciptive title to y-axis</span>
+         <span class="dt">fill =</span> <span class="st">&quot;Diagnosis&quot;</span>)        <span class="co"># change dx to Diagnosis in the legend</span></code></pre></div>
+<p><img src="02-know-your-data_files/figure-html/plot%20bit-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="pretty-tables-with-dplyr" class="section level2">
+<h2><span class="header-section-number">3.4</span> pretty tables with dplyr</h2>
+<p>In the section below we use two powerful tools from dplyr:</p>
+<ul>
+<li><code>summarise</code>: will calculate summary statistics, we are going to ask for three stats here:</li>
+<li>n_age: the number of valid (i.e. not NA) values for age</li>
+<li>mean_age: the mean for age (after removing NA values using the na.rm argument)</li>
+<li>sd_age: the standard deviation for age after removing the NA values</li>
+<li><code>group_by</code>: will split the data by the “grouping” variable(s) you input</li>
+<li>in this case we are asking for separate summary statistics for each diagnostic group, for each genotype</li>
+</ul>
+<p>After calculating our summary table we are going to call <code>kable</code>, a function in the <code>knitr</code> package. That make the table appear nicer in our “knitted” report.</p>
+<p><em>Note</em>: kable has some kewl optional arguments you can use to format you table further, such as <code>col.names</code>, <code>digits</code>, and <code>align</code>. Check out <code>?kable</code> for more info..</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table_<span class="dv">2</span> &lt;-<span class="st"> </span>alldata <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">drop_na</span>(dx) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(dx,genotype) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n_age =</span> <span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(age)), <span class="co">#the total number of observations that are NOT NA</span>
+            <span class="dt">mean_age =</span> <span class="kw">mean</span>(age, <span class="dt">na.rm =</span> T),
+            <span class="dt">sd_age =</span> <span class="kw">sd</span>(age, <span class="dt">na.rm =</span> T))
+<span class="kw">library</span>(knitr)
+<span class="kw">kable</span>(table_<span class="dv">2</span>)</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">dx</th>
+<th align="left">genotype</th>
+<th align="right">n_age</th>
+<th align="right">mean_age</th>
+<th align="right">sd_age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Control</td>
+<td align="left">AA</td>
+<td align="right">43</td>
+<td align="right">52.00000</td>
+<td align="right">10.574002</td>
+</tr>
+<tr class="even">
+<td align="left">Control</td>
+<td align="left">AG</td>
+<td align="right">66</td>
+<td align="right">49.92424</td>
+<td align="right">11.024882</td>
+</tr>
+<tr class="odd">
+<td align="left">Control</td>
+<td align="left">GG</td>
+<td align="right">50</td>
+<td align="right">49.94000</td>
+<td align="right">14.217566</td>
+</tr>
+<tr class="even">
+<td align="left">Control</td>
+<td align="left">NA</td>
+<td align="right">4</td>
+<td align="right">47.50000</td>
+<td align="right">12.476645</td>
+</tr>
+<tr class="odd">
+<td align="left">Case</td>
+<td align="left">AA</td>
+<td align="right">57</td>
+<td align="right">55.08772</td>
+<td align="right">10.554756</td>
+</tr>
+<tr class="even">
+<td align="left">Case</td>
+<td align="left">AG</td>
+<td align="right">71</td>
+<td align="right">48.61972</td>
+<td align="right">10.355628</td>
+</tr>
+<tr class="odd">
+<td align="left">Case</td>
+<td align="left">GG</td>
+<td align="right">43</td>
+<td align="right">48.37209</td>
+<td align="right">11.176129</td>
+</tr>
+<tr class="even">
+<td align="left">Case</td>
+<td align="left">NA</td>
+<td align="right">2</td>
+<td align="right">38.00000</td>
+<td align="right">9.899495</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="use-forcats-to-label-risk_carriers" class="section level2">
+<h2><span class="header-section-number">3.5</span> use forcats to label risk_carriers</h2>
+<p>When working with a genotype of interest, it’s very common group participants into “carriers” and “non-carriers” of a risk-allele. In this dataset, our risk allele is the “G” genotype. We will create a new “risk_carrier” variable by combining levels of the genotype variable.</p>
+<p>Working with factors in R can be…annoying. Especially when we want to create new factors out of old factors. For this reason, the tidyverse includes a <code>forcats</code> package. That includes many function (all starting with <code>fct_</code>) for doing stuff to factors. We will use <code>fct_collapse</code> to combine the “GG” and “AG” genotype factors into a new “carrier” level in a new factor.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(forcats)
+alldata &lt;-<span class="st"> </span>alldata <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">risk_carrier =</span> <span class="kw">fct_collapse</span>(genotype,
+                                     <span class="dt">carrier =</span> <span class="kw">c</span>(<span class="st">&quot;GG&quot;</span>, <span class="st">&quot;AG&quot;</span>),
+                                     <span class="dt">non_carrier =</span> <span class="st">&quot;AA&quot;</span>))</code></pre></div>
+</div>
+<div id="make-a-simple-scatter-plot" class="section level2">
+<h2><span class="header-section-number">3.6</span> Make a simple scatter plot</h2>
+<p>Let’s use <code>geom_point()</code> and <code>geom_smooth</code>, together to create a scatter plot with a trendline.</p>
+<p><em>Note:</em> to make the trendline straight, we use “method = lm” when calling geom_smooth().</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alldata <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> cog1)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) </code></pre></div>
+<p><img src="02-know-your-data_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="use-plotting-to-show-the-age-by-risk-carrier-interaction" class="section level2">
+<h2><span class="header-section-number">3.7</span> Use plotting to show the age by risk carrier interaction</h2>
+<p>When we add a new mapping of <code>color = risk_carrier</code> to the top line of our plot this mapping applies to <em>both</em> the points and the trendline.</p>
+<p><em>Note:</em> we are using <code>drop_na</code> to remove the NA as a category so that it does not occur as a third color in our plot.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alldata <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">drop_na</span>(risk_carrier) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> cog1, <span class="dt">color =</span> risk_carrier)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) </code></pre></div>
+<p><img src="02-know-your-data_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>We can use faceting to add and extra dimension - separate plots for male and female subjects.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alldata <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">drop_na</span>(risk_carrier,sex) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> cog1, <span class="dt">color =</span> risk_carrier)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>sex)</code></pre></div>
+<p><img src="02-know-your-data_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><code>facet_grid</code> will allow us to facet by TWO variables. In this case sex and dx.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alldata <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(risk_carrier), <span class="op">!</span><span class="kw">is.na</span>(sex), <span class="op">!</span><span class="kw">is.na</span>(dx)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> cog1, <span class="dt">color =</span> risk_carrier)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">facet_grid</span>(dx<span class="op">~</span>sex)</code></pre></div>
+<p><img src="02-know-your-data_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</div>
+<div id="bonus-section---gather-cognitive-scores-into-one-plot" class="section level2">
+<h2><span class="header-section-number">3.8</span> BONUS section - gather cognitive scores into one plot</h2>
+<p>One things we want to do sometimes is to stack data from multiple columns in one column. The reason why this is useful, will hopefully become apparent in the next example.</p>
+<p>This “stacking” task (also refered to as “melting”) is accomplished using <code>gather</code> from the <code>tidyr</code> package. <code>gather</code> creates two new columns from your data: “key” and “value”. + <strong>key</strong>: a new column that will hold the old variable names from the gathered data + <strong>value</strong>: a new column that will hold the data values</p>
+<p>After the <strong>key</strong> and <strong>value</strong> arguments. We can tell <code>gather</code> what colums we want to stack using the same syntax used by dplyr’s <code>select()</code>. In this example, we tell it we want to gather our three cognitive scales using <code>starts_with()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr)
+alldata <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(cog_scale, cognitive_score, <span class="kw">starts_with</span>(<span class="st">&quot;cog&quot;</span>))</code></pre></div>
+<pre><code>## # A tibble: 1,050 x 9
+##    subject_ID   age sex    ethnicity dx    genotype risk_carrier cog_scale
+##    &lt;chr&gt;      &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt;        &lt;chr&gt;    
+##  1 SUB_1       43.0 Male   Cauc      Cont… GG       carrier      cog1     
+##  2 SUB_2       47.0 Female Cauc      Case  AG       carrier      cog1     
+##  3 SUB_3       69.0 Female Cauc      Case  AA       non_carrier  cog1     
+##  4 SUB_4       51.0 Male   Cauc      Case  GG       carrier      cog1     
+##  5 SUB_5       52.0 Female Cauc      Cont… AA       non_carrier  cog1     
+##  6 SUB_6       71.0 Male   AA        Case  AA       non_carrier  cog1     
+##  7 SUB_7       56.0 Female Cauc      Case  AA       non_carrier  cog1     
+##  8 SUB_8       35.0 Female &lt;NA&gt;      Cont… GG       carrier      cog1     
+##  9 SUB_9       42.0 Female Cauc      Cont… AG       carrier      cog1     
+## 10 SUB_10      45.0 Female Other     Case  &lt;NA&gt;     &lt;NA&gt;         cog1     
+## # ... with 1,040 more rows, and 1 more variable: cognitive_score &lt;dbl&gt;</code></pre>
+<p>The beauty of gather is that it can be combined with other the rest of the tidyverse using the pipe. Let’s feed out gathered result to ggplot.</p>
+<p><em>Note:</em> using <code>scales = &quot;free&quot;</code> when faceting will force ggplot to draw a separate axis for each subplot (by default, <code>scales = &quot;fixed&quot;</code>, meaning that the same axes are drawn for each plot).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alldata <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">gather</span>(cog_scale, cognitive_score, <span class="kw">starts_with</span>(<span class="st">&quot;cog&quot;</span>)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">drop_na</span>(risk_carrier, dx) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> cognitive_score, <span class="dt">color =</span> risk_carrier)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>cog_scale, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)  </code></pre></div>
+<p><img src="02-know-your-data_files/figure-html/unnamed-chunk-18-1.png" width="960" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="importing-data-into-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="stats-linear-models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/camh-neuroinformatics/CAMH-Rstats/edit/master/02-know-your-data.Rmd",
+"text": "Edit"
+},
+"download": ["CAMH-Rstats.pdf"],
+"toc": {
+"collapse": "section"
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+</body>
+
+</html>
