@@ -26,3 +26,9 @@ rm -r
 
 We can add css styles to custom blocks for an extra Q & A section later..
 https://bookdown.org/yihui/bookdown/custom-blocks.html
+
+## Ideas for future content
+- using [tidy eval](https://tidyeval.tidyverse.org/)
+- preparing reproducible examples using [reprex](https://reprex.tidyverse.org/)
+- visualizing multidimensional data
+- brain-specific visualization packages
