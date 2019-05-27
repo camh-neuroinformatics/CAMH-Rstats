@@ -29,9 +29,9 @@ Also, please install here awesome R packages (again, if you don't know how pleas
 This book works from the following files of fake clinical data, that can be downloaded from the following links:
 
 
-1. [messy_demographic.csv](https://raw.githubusercontent.com/CAMH-SCWG/example-party/master/messy_data/messy_demographic.csv)
-2. [messy_cognitive.csv](https://raw.githubusercontent.com/CAMH-SCWG/example-party/master/messy_data/messy_cognitive.csv)
-2. [messy_cognitive.csv](https://raw.githubusercontent.com/CAMH-SCWG/example-party/master/messy_data/messy_cognitive.csv)
+1. [messy_demographic.csv](https://raw.githubusercontent.com/josephmje/CAMH-Rstats/master/data/messy_demographic.csv)
+2. [messy_cognitive.csv](https://raw.githubusercontent.com/josephmje/CAMH-Rstats/master/data/messy_cognitive.csv)
+2. [messy_genotype.csv](https://raw.githubusercontent.com/josephmje/CAMH-Rstats/master/data/messy_genotype.csv)
 
 ---------
 
