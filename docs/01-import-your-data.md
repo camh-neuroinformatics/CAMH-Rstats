@@ -61,7 +61,7 @@ head(demo_df)
 ```
 ## # A tibble: 6 x 5
 ##   subject_ID age     sex ethnicity dx   
-##   <chr>      <chr> <int> <chr>     <chr>
+##   <chr>      <chr> <dbl> <chr>     <chr>
 ## 1 SUB_1      43        0 Cauc      0    
 ## 2 SUB_2      47        1 Cauc      1    
 ## 3 SUB_3      69        1 Cauc      1    

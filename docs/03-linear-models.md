@@ -56,7 +56,7 @@ data3 <- read_csv("~/Downloads/messy_genotype.csv")
 ## cols(
 ##   subject_ID = col_character(),
 ##   age = col_character(),
-##   sex = col_integer(),
+##   sex = col_double(),
 ##   ethnicity = col_character(),
 ##   dx = col_character()
 ## )
@@ -115,6 +115,21 @@ clean_demographic <- messy_demographic %>%
 clean_cognitive <- messy_cognitive %>%
   recode_missing() %>%
   mutate_at(vars(cog1:cog3), funs(parse_number(.)))
+```
+
+```
+## Warning: funs() is soft deprecated as of dplyr 0.8.0
+## please use list() instead
+## 
+##   # Before:
+##   funs(name = f(.))
+## 
+##   # After: 
+##   list(name = ~ f(.))
+## This warning is displayed once per session.
+```
+
+```r
 ## recode and set genotype to a factor
 clean_genotype <- messy_genotype %>%
   recode_missing() %>%
@@ -215,20 +230,16 @@ head(cogbyage_aug)
 ```
 
 ```
-##   .rownames     cog2 age  .fitted   .se.fit      .resid        .hat
-## 1         1 28.82050  43 30.03823 0.1922539 -1.21773373 0.004255104
-## 2         2 37.46947  47 30.89260 0.1680257  6.57687558 0.003250207
-## 3         3 37.72990  69 35.59159 0.3051575  2.13831656 0.010720322
-## 4         4 31.66686  51 31.74696 0.1606849 -0.08009890 0.002972417
-## 5         5 31.41426  52 31.96055 0.1618742 -0.54629124 0.003016580
-## 6         6 36.05572  71 36.01877 0.3293842  0.03695909 0.012490085
-##     .sigma      .cooksd  .std.resid
-## 1 2.950925 3.663098e-04 -0.41405515
-## 2 2.929588 8.145312e-03  2.23514884
-## 3 2.949335 2.882992e-03  0.72944467
-## 4 2.951677 1.104278e-06 -0.02721779
-## 5 2.951528 5.213355e-05 -0.18563513
-## 6 2.951679 1.007059e-06  0.01261916
+## # A tibble: 6 x 10
+##   .rownames  cog2   age .fitted .se.fit  .resid    .hat .sigma .cooksd
+##   <chr>     <dbl> <dbl>   <dbl>   <dbl>   <dbl>   <dbl>  <dbl>   <dbl>
+## 1 1          28.8    43    30.0   0.192 -1.22   0.00426   2.95 3.66e-4
+## 2 2          37.5    47    30.9   0.168  6.58   0.00325   2.93 8.15e-3
+## 3 3          37.7    69    35.6   0.305  2.14   0.0107    2.95 2.88e-3
+## 4 4          31.7    51    31.7   0.161 -0.0801 0.00297   2.95 1.10e-6
+## 5 5          31.4    52    32.0   0.162 -0.546  0.00302   2.95 5.21e-5
+## 6 6          36.1    71    36.0   0.329  0.0370 0.0125    2.95 1.01e-6
+## # … with 1 more variable: .std.resid <dbl>
 ```
 
 ### `tidy` grabs to middle table (beta's and t-stats)
@@ -241,9 +252,11 @@ cogbyage_tidy
 ```
 
 ```
-##          term   estimate  std.error statistic      p.value
-## 1 (Intercept) 20.8538467 0.72779789  28.65335 4.088251e-92
-## 2         age  0.2135904 0.01404897  15.20328 4.592760e-40
+## # A tibble: 2 x 5
+##   term        estimate std.error statistic  p.value
+##   <chr>          <dbl>     <dbl>     <dbl>    <dbl>
+## 1 (Intercept)   20.9      0.728       28.7 4.09e-92
+## 2 age            0.214    0.0140      15.2 4.59e-40
 ```
 
 ### `glance` grabs to full model stats 
@@ -256,10 +269,11 @@ cogbyage_glance
 ```
 
 ```
-##   r.squared adj.r.squared    sigma statistic     p.value df    logLik
-## 1 0.4082732     0.4065069 2.947271  231.1397 4.59276e-40  2 -841.4358
-##        AIC      BIC deviance df.residual
-## 1 1688.872 1700.332 2909.947         335
+## # A tibble: 1 x 11
+##   r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC
+##       <dbl>         <dbl> <dbl>     <dbl>    <dbl> <int>  <dbl> <dbl> <dbl>
+## 1     0.408         0.407  2.95      231. 4.59e-40     2  -841. 1689. 1700.
+## # … with 2 more variables: deviance <dbl>, df.residual <int>
 ```
 
 ## Example: printing our formatted t
@@ -276,7 +290,9 @@ print(my_t_stat)
 ```
 
 ```
+## # A tibble: 1 x 1
 ##   statistic
+##       <dbl>
 ## 1      15.2
 ```
 
@@ -614,15 +630,7 @@ library(rms)
 ```
 
 ```
-## Warning: package 'rms' was built under R version 3.5.2
-```
-
-```
 ## Loading required package: Hmisc
-```
-
-```
-## Warning: package 'Hmisc' was built under R version 3.5.2
 ```
 
 ```
