@@ -17,7 +17,7 @@ description: "This is a minimal example of using the bookdown package to write a
 Please have these both installed (come early if you need help):
 
 * **R**: [Download from here](https://cran.r-project.org/)
-* **rstudio**: [Download from here](https://www.rstudio.com/products/RStudio/#Desktop)
+* **RStudio**: [Download from here](https://www.rstudio.com/products/rstudio/download/#download)
 
 Also, please install here awesome R packages (again, if you don't know how please come early):
 

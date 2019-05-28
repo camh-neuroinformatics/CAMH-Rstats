@@ -614,7 +614,15 @@ library(rms)
 ```
 
 ```
+## Warning: package 'rms' was built under R version 3.5.2
+```
+
+```
 ## Loading required package: Hmisc
+```
+
+```
+## Warning: package 'Hmisc' was built under R version 3.5.2
 ```
 
 ```
@@ -648,10 +656,6 @@ library(rms)
 
 ```
 ## Loading required package: SparseM
-```
-
-```
-## Loading required package: methods
 ```
 
 ```

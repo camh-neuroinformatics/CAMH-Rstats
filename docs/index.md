@@ -1,7 +1,7 @@
 --- 
 title: "CAMH R-stats Workshops"
 author: "Erin Dickie"
-date: "2018-11-15"
+date: "2019-05-28"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -17,7 +17,7 @@ description: "This is a minimal example of using the bookdown package to write a
 Please have these both installed (come early if you need help):
 
 * **R**: [Download from here](https://cran.r-project.org/)
-* **rstudio**: [Download from here](https://www.rstudio.com/products/RStudio/#Desktop)
+* **RStudio**: [Download from here](https://www.rstudio.com/products/rstudio/download/#download)
 
 Also, please install here awesome R packages (again, if you don't know how please come early):
 
@@ -29,9 +29,9 @@ Also, please install here awesome R packages (again, if you don't know how pleas
 This book works from the following files of fake clinical data, that can be downloaded from the following links:
 
 
-1. [messy_demographic.csv](https://raw.githubusercontent.com/CAMH-SCWG/example-party/master/messy_data/messy_demographic.csv)
-2. [messy_cognitive.csv](https://raw.githubusercontent.com/CAMH-SCWG/example-party/master/messy_data/messy_cognitive.csv)
-2. [messy_cognitive.csv](https://raw.githubusercontent.com/CAMH-SCWG/example-party/master/messy_data/messy_cognitive.csv)
+1. [messy_demographic.csv](https://raw.githubusercontent.com/josephmje/CAMH-Rstats/master/data/messy_demographic.csv)
+2. [messy_cognitive.csv](https://raw.githubusercontent.com/josephmje/CAMH-Rstats/master/data/messy_cognitive.csv)
+2. [messy_genotype.csv](https://raw.githubusercontent.com/josephmje/CAMH-Rstats/master/data/messy_genotype.csv)
 
 ---------
 

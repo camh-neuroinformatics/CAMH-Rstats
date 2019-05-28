@@ -35,6 +35,23 @@ For more info on programming with the tidyverse I highly recommend the online bo
 library(tidyverse)
 ```
 
+```
+## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+```
+
+```
+## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.8
+## ✔ tidyr   0.8.0     ✔ stringr 1.3.1
+## ✔ readr   1.1.1     ✔ forcats 0.3.0
+```
+
+```
+## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+```
+
 ### reading in the data
 
 
@@ -132,6 +149,13 @@ It takes four useful arguments
 
 ```r
 library(tableone)
+```
+
+```
+## Warning: package 'tableone' was built under R version 3.5.2
+```
+
+```r
 CreateTableOne(alldata,
                vars = c("age", "sex",
                         "genotype","ethnicity",
@@ -145,7 +169,7 @@ CreateTableOne(alldata,
 ##                   Stratified by dx
 ##                    Control       Case          p      test
 ##   n                  166           178                    
-##   age (mean (sd))  50.42 (11.95) 50.57 (11.06)  0.905     
+##   age (mean (SD))  50.42 (11.95) 50.57 (11.06)  0.905     
 ##   sex = Female (%)   127 (77.4)     86 (48.9)  <0.001     
 ##   genotype (%)                                  0.371     
 ##      AA               44 (27.2)     58 (33.1)             
@@ -157,9 +181,9 @@ CreateTableOne(alldata,
 ##      Cauc             92 (57.1)    100 (57.5)             
 ##      In               11 ( 6.8)      8 ( 4.6)             
 ##      Other             5 ( 3.1)      9 ( 5.2)             
-##   cog1 (mean (sd))  9.94 (2.91)  12.13 (3.44)  <0.001     
-##   cog2 (mean (sd)) 31.55 (3.88)  31.78 (3.79)   0.573     
-##   cog3 (mean (sd)) 25.20 (21.76) 25.25 (20.39)  0.982
+##   cog1 (mean (SD))  9.94 (2.91)  12.13 (3.44)  <0.001     
+##   cog2 (mean (SD)) 31.55 (3.88)  31.78 (3.79)   0.573     
+##   cog3 (mean (SD)) 25.20 (21.76) 25.25 (20.39)  0.982
 ```
 
 ## Research Question 1 (two group comparison)
@@ -386,16 +410,16 @@ alldata %>%
 ## # A tibble: 1,050 x 9
 ##    subject_ID   age sex    ethnicity dx    genotype risk_carrier cog_scale
 ##    <chr>      <dbl> <fct>  <fct>     <fct> <fct>    <fct>        <chr>    
-##  1 SUB_1       43.0 Male   Cauc      Cont… GG       carrier      cog1     
-##  2 SUB_2       47.0 Female Cauc      Case  AG       carrier      cog1     
-##  3 SUB_3       69.0 Female Cauc      Case  AA       non_carrier  cog1     
-##  4 SUB_4       51.0 Male   Cauc      Case  GG       carrier      cog1     
-##  5 SUB_5       52.0 Female Cauc      Cont… AA       non_carrier  cog1     
-##  6 SUB_6       71.0 Male   AA        Case  AA       non_carrier  cog1     
-##  7 SUB_7       56.0 Female Cauc      Case  AA       non_carrier  cog1     
-##  8 SUB_8       35.0 Female <NA>      Cont… GG       carrier      cog1     
-##  9 SUB_9       42.0 Female Cauc      Cont… AG       carrier      cog1     
-## 10 SUB_10      45.0 Female Other     Case  <NA>     <NA>         cog1     
+##  1 SUB_1         43 Male   Cauc      Cont… GG       carrier      cog1     
+##  2 SUB_2         47 Female Cauc      Case  AG       carrier      cog1     
+##  3 SUB_3         69 Female Cauc      Case  AA       non_carrier  cog1     
+##  4 SUB_4         51 Male   Cauc      Case  GG       carrier      cog1     
+##  5 SUB_5         52 Female Cauc      Cont… AA       non_carrier  cog1     
+##  6 SUB_6         71 Male   AA        Case  AA       non_carrier  cog1     
+##  7 SUB_7         56 Female Cauc      Case  AA       non_carrier  cog1     
+##  8 SUB_8         35 Female <NA>      Cont… GG       carrier      cog1     
+##  9 SUB_9         42 Female Cauc      Cont… AG       carrier      cog1     
+## 10 SUB_10        45 Female Other     Case  <NA>     <NA>         cog1     
 ## # ... with 1,040 more rows, and 1 more variable: cognitive_score <dbl>
 ```
 
