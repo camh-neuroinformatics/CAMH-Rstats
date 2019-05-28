@@ -58,9 +58,9 @@ library(tidyverse)
 
 
 ```r
-data1 <- read_csv("~/Desktop/messy_demographic.csv")
-data2 <- read_csv("~/Desktop/messy_cognitive.csv")
-data3 <- read_csv("~/Desktop/messy_genotype.csv")
+demo_df <- read_csv("~/Desktop/messy_demographic.csv")
+cog_df <- read_csv("~/Desktop/messy_cognitive.csv")
+gene_df <- read_csv("~/Desktop/messy_genotype.csv")
 ```
 
 ### copy and paste the cleaning code
@@ -73,37 +73,37 @@ We are going to put them in one big chunk here.
 ```r
 library(stringr)
 
-data1[data1==""] <- NA
-data1[data1=="missing"] <- NA
-data1[data1=="9999"] <- NA
-data1 <- data1 %>%
+demo_df[demo_df==""] <- NA
+demo_df[demo_df=="missing"] <- NA
+demo_df[demo_df=="9999"] <- NA
+demo_df <- demo_df %>%
   mutate(age = as.numeric(age),
          ethnicity = factor(ethnicity),
          sex = factor(sex, levels = c(0,1), 
                       labels = c("Male", "Female")),
          dx = factor(dx, levels = c(0,1), 
                      labels = c("Control", "Case")))
-data2[data2==""] <- NA
-data2[data2=="missing"] <- NA
-data2[data2=="9999"] <- NA
-data2 <- data2 %>%
+cog_df[cog_df==""] <- NA
+cog_df[cog_df=="missing"] <- NA
+cog_df[cog_df=="9999"] <- NA
+cog_df <- cog_df %>%
   mutate(cog1 = as.numeric(cog1),
          cog2 = as.numeric(cog2),
          cog3 = as.numeric(cog3),
          subject_ID = str_replace(subID, "subject", "SUB_")) %>%
   select(subject_ID, cog1:cog3)
-data3[data3==""] <- NA
-data3[data3=="missing"] <- NA
-data3[data3=="9999"] <- NA
-data3 <- data3 %>%
+gene_df[gene_df==""] <- NA
+gene_df[gene_df=="missing"] <- NA
+gene_df[gene_df=="9999"] <- NA
+gene_df <- gene_df %>%
   mutate(genotype = factor(genotype,
                            levels=c(0,1,2), 
                            labels=c("AA","AG","GG")),
          subject_ID = str_replace(subID, "subject", "SUB_")) %>%
   select(-subID)
-alldata <- data1 %>%
-  inner_join(data2, by="subject_ID") %>%
-  inner_join(data3, by="subject_ID")
+alldata <- demo_df %>%
+  inner_join(cog_df, by="subject_ID") %>%
+  inner_join(gene_df, by="subject_ID")
 ```
 
 ### Let's see what we have here
@@ -231,6 +231,7 @@ my_ttest_result$p.value
 
 ```r
 library(ggplot2)
+
 ggplot(data = alldata, aes(x = dx, y = cog1)) +
   geom_boxplot()
 ```
