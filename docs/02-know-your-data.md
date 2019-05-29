@@ -35,15 +35,32 @@ For more info on programming with the tidyverse I highly recommend the online bo
 library(tidyverse)
 ```
 
+```
+## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+```
+
+```
+## ✔ ggplot2 3.1.1     ✔ purrr   0.3.2
+## ✔ tibble  2.1.1     ✔ dplyr   0.8.1
+## ✔ tidyr   0.8.3     ✔ stringr 1.4.0
+## ✔ readr   1.3.1     ✔ forcats 0.4.0
+```
+
+```
+## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+```
+
 ### reading in the data
 
 
 
 
 ```r
-data1 <- read_csv("~/Desktop/messy_demographic.csv")
-data2 <- read_csv("~/Desktop/messy_cognitive.csv")
-data3 <- read_csv("~/Desktop/messy_genotype.csv")
+demo_df <- read_csv("~/Desktop/messy_demographic.csv")
+cog_df <- read_csv("~/Desktop/messy_cognitive.csv")
+gene_df <- read_csv("~/Desktop/messy_genotype.csv")
 ```
 
 ### copy and paste the cleaning code
@@ -56,37 +73,37 @@ We are going to put them in one big chunk here.
 ```r
 library(stringr)
 
-data1[data1==""] <- NA
-data1[data1=="missing"] <- NA
-data1[data1=="9999"] <- NA
-data1 <- data1 %>%
+demo_df[demo_df==""] <- NA
+demo_df[demo_df=="missing"] <- NA
+demo_df[demo_df=="9999"] <- NA
+demo_df <- demo_df %>%
   mutate(age = as.numeric(age),
          ethnicity = factor(ethnicity),
          sex = factor(sex, levels = c(0,1), 
                       labels = c("Male", "Female")),
          dx = factor(dx, levels = c(0,1), 
                      labels = c("Control", "Case")))
-data2[data2==""] <- NA
-data2[data2=="missing"] <- NA
-data2[data2=="9999"] <- NA
-data2 <- data2 %>%
+cog_df[cog_df==""] <- NA
+cog_df[cog_df=="missing"] <- NA
+cog_df[cog_df=="9999"] <- NA
+cog_df <- cog_df %>%
   mutate(cog1 = as.numeric(cog1),
          cog2 = as.numeric(cog2),
          cog3 = as.numeric(cog3),
          subject_ID = str_replace(subID, "subject", "SUB_")) %>%
   select(subject_ID, cog1:cog3)
-data3[data3==""] <- NA
-data3[data3=="missing"] <- NA
-data3[data3=="9999"] <- NA
-data3 <- data3 %>%
+gene_df[gene_df==""] <- NA
+gene_df[gene_df=="missing"] <- NA
+gene_df[gene_df=="9999"] <- NA
+gene_df <- gene_df %>%
   mutate(genotype = factor(genotype,
                            levels=c(0,1,2), 
                            labels=c("AA","AG","GG")),
          subject_ID = str_replace(subID, "subject", "SUB_")) %>%
   select(-subID)
-alldata <- data1 %>%
-  inner_join(data2, by="subject_ID") %>%
-  inner_join(data3, by="subject_ID")
+alldata <- demo_df %>%
+  inner_join(cog_df, by="subject_ID") %>%
+  inner_join(gene_df, by="subject_ID")
 ```
 
 ### Let's see what we have here
@@ -145,7 +162,7 @@ CreateTableOne(alldata,
 ##                   Stratified by dx
 ##                    Control       Case          p      test
 ##   n                  166           178                    
-##   age (mean (sd))  50.42 (11.95) 50.57 (11.06)  0.905     
+##   age (mean (SD))  50.42 (11.95) 50.57 (11.06)  0.905     
 ##   sex = Female (%)   127 (77.4)     86 (48.9)  <0.001     
 ##   genotype (%)                                  0.371     
 ##      AA               44 (27.2)     58 (33.1)             
@@ -157,9 +174,9 @@ CreateTableOne(alldata,
 ##      Cauc             92 (57.1)    100 (57.5)             
 ##      In               11 ( 6.8)      8 ( 4.6)             
 ##      Other             5 ( 3.1)      9 ( 5.2)             
-##   cog1 (mean (sd))  9.94 (2.91)  12.13 (3.44)  <0.001     
-##   cog2 (mean (sd)) 31.55 (3.88)  31.78 (3.79)   0.573     
-##   cog3 (mean (sd)) 25.20 (21.76) 25.25 (20.39)  0.982
+##   cog1 (mean (SD))  9.94 (2.91)  12.13 (3.44)  <0.001     
+##   cog2 (mean (SD)) 31.55 (3.88)  31.78 (3.79)   0.573     
+##   cog3 (mean (SD)) 25.20 (21.76) 25.25 (20.39)  0.982
 ```
 
 ## Research Question 1 (two group comparison)
@@ -207,6 +224,7 @@ my_ttest_result$p.value
 
 ```r
 library(ggplot2)
+
 ggplot(data = alldata, aes(x = dx, y = cog1)) +
   geom_boxplot()
 ```
@@ -272,6 +290,14 @@ table_2 <- alldata %>%
   summarise(n_age = sum(!is.na(age)), #the total number of observations that are NOT NA
             mean_age = mean(age, na.rm = T),
             sd_age = sd(age, na.rm = T))
+```
+
+```
+## Warning: Factor `genotype` contains implicit NA, consider using
+## `forcats::fct_explicit_na`
+```
+
+```r
 library(knitr)
 kable(table_2)
 ```
@@ -384,19 +410,19 @@ alldata %>%
 
 ```
 ## # A tibble: 1,050 x 9
-##    subject_ID   age sex    ethnicity dx    genotype risk_carrier cog_scale
-##    <chr>      <dbl> <fct>  <fct>     <fct> <fct>    <fct>        <chr>    
-##  1 SUB_1       43.0 Male   Cauc      Cont… GG       carrier      cog1     
-##  2 SUB_2       47.0 Female Cauc      Case  AG       carrier      cog1     
-##  3 SUB_3       69.0 Female Cauc      Case  AA       non_carrier  cog1     
-##  4 SUB_4       51.0 Male   Cauc      Case  GG       carrier      cog1     
-##  5 SUB_5       52.0 Female Cauc      Cont… AA       non_carrier  cog1     
-##  6 SUB_6       71.0 Male   AA        Case  AA       non_carrier  cog1     
-##  7 SUB_7       56.0 Female Cauc      Case  AA       non_carrier  cog1     
-##  8 SUB_8       35.0 Female <NA>      Cont… GG       carrier      cog1     
-##  9 SUB_9       42.0 Female Cauc      Cont… AG       carrier      cog1     
-## 10 SUB_10      45.0 Female Other     Case  <NA>     <NA>         cog1     
-## # ... with 1,040 more rows, and 1 more variable: cognitive_score <dbl>
+##    subject_ID   age sex   ethnicity dx    genotype risk_carrier cog_scale
+##    <chr>      <dbl> <fct> <fct>     <fct> <fct>    <fct>        <chr>    
+##  1 SUB_1         43 Male  Cauc      Cont… GG       carrier      cog1     
+##  2 SUB_2         47 Fema… Cauc      Case  AG       carrier      cog1     
+##  3 SUB_3         69 Fema… Cauc      Case  AA       non_carrier  cog1     
+##  4 SUB_4         51 Male  Cauc      Case  GG       carrier      cog1     
+##  5 SUB_5         52 Fema… Cauc      Cont… AA       non_carrier  cog1     
+##  6 SUB_6         71 Male  AA        Case  AA       non_carrier  cog1     
+##  7 SUB_7         56 Fema… Cauc      Case  AA       non_carrier  cog1     
+##  8 SUB_8         35 Fema… <NA>      Cont… GG       carrier      cog1     
+##  9 SUB_9         42 Fema… Cauc      Cont… AG       carrier      cog1     
+## 10 SUB_10        45 Fema… Other     Case  <NA>     <NA>         cog1     
+## # … with 1,040 more rows, and 1 more variable: cognitive_score <dbl>
 ```
 
 The beauty of gather is that it can be combined with other the rest of the tidyverse using the pipe. Let's feed out gathered result to ggplot.

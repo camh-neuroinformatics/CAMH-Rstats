@@ -24,15 +24,15 @@ In order to view and manipulate this data in R, we need to *import* the data int
 * In my view, it looks like the R is not going to read in the first line as a header..to change this
 * switch the **Heading** option on the right to **yes**
 * Click **Import**
-* Now, if you look at the **Environment** tab you should see that *data1* has been loaded into R, It has 350 rows (or observations) and 5 variables
-* So that you do not have to type this again tomorrow - go to History, click on the line "data1 <- read.csv(...)" and then click on **To Source**
+* Now, if you look at the **Environment** tab you should see that *demo_df* has been loaded into R, It has 350 rows (or observations) and 5 variables
+* So that you do not have to type this again tomorrow - go to History, click on the line "demo_df <- read.csv(...)" and then click on **To Source**
 * Repeat this whole process for *messy_demographic.csv*
 
 
 ```r
 library(readr)
-data1 <- read_csv("~/Downloads/messy_demographic.csv")
-data2 <- read_csv("~/Downloads/messy_cognitive.csv")
+demo_df <- read_csv("~/Downloads/messy_demographic.csv")
+cog_df <- read_csv("~/Downloads/messy_cognitive.csv")
 ```
 
 
@@ -41,7 +41,7 @@ data2 <- read_csv("~/Downloads/messy_cognitive.csv")
 * This is the basic syntax of R functions: some.function("stuff inside to do the function on")
 * The *help document* for the read.csv function is shown in the **Help** tab
 
-Now we have two **"data frames"** loaded into our workspace. They are called data1 and data2.
+Now we have two **"data frames"** loaded into our workspace. They are called demo_df and cog_df.
 
 -------
 
@@ -49,19 +49,19 @@ Now we have two **"data frames"** loaded into our workspace. They are called dat
 
 
 + Now that we have the data loaded, how do we just look at it? The simplest way is with the "View" function within rstudio.
-+ In Enviroment tab. Click on the little spreadsheet to teh far right of the data1.csv row... this shows you your data in what looks like a spreadsheet - but you cannot edit it!
++ In Enviroment tab. Click on the little spreadsheet to teh far right of the demo_df.csv row... this shows you your data in what looks like a spreadsheet - but you cannot edit it!
 
 To look at the top six rows of your data:
 
 
 ```r
-head(data1)
+head(demo_df)
 ```
 
 ```
 ## # A tibble: 6 x 5
 ##   subject_ID age     sex ethnicity dx   
-##   <chr>      <chr> <int> <chr>     <chr>
+##   <chr>      <chr> <dbl> <chr>     <chr>
 ## 1 SUB_1      43        0 Cauc      0    
 ## 2 SUB_2      47        1 Cauc      1    
 ## 3 SUB_3      69        1 Cauc      1    
@@ -74,7 +74,7 @@ To look at the bottom six rows:
 
 
 ```r
-tail(data2)
+tail(cog_df)
 ```
 
 ```
@@ -94,7 +94,7 @@ Using the function names() tells us what all the variables in our dataframe are 
 
 
 ```r
-names(data1)
+names(demo_df)
 ```
 
 ```
@@ -105,7 +105,7 @@ the ls() function does the same thing, except it returns the variables in alphab
 
 
 ```r
-ls(data1)
+ls(demo_df)
 ```
 
 ```
@@ -116,7 +116,7 @@ That was all nice, but we want to find out more about this data we can use "summ
 
 
 ```r
-summary(data1)
+summary(demo_df)
 ```
 
 ```
@@ -139,7 +139,7 @@ summary(data1)
 ```
 
 ```r
-summary(data2)
+summary(cog_df)
 ```
 
 ```
@@ -162,13 +162,13 @@ summary(data2)
 The RA that you have been working with have coded missing values in three different ways ("9999", "missing",and "NA")
 * We first need to set these all to NA - which R recognizes as missing value:
 
-The following will take all values in data1 that are equal to "", "missing", or "9999", and code them as missing in a way that R understands:
+The following will take all values in demo_df that are equal to "", "missing", or "9999", and code them as missing in a way that R understands:
 
 
 ```r
-data1[data1==""] <- NA
-data1[data1=="missing"] <- NA
-data1[data1=="9999"] <- NA
+demo_df[demo_df==""] <- NA
+demo_df[demo_df=="missing"] <- NA
+demo_df[demo_df=="9999"] <- NA
 ```
 
 Because R is "smart", it categorizes data types automatically when data are loaded. Before working with new data, especailly if it is real (i.e. messy), it is important to tell R what kind of data
@@ -183,10 +183,10 @@ The following will correctly format our variables for analyses:
 
 
 ```r
-data1$age <- as.numeric(as.character(data1$age))
-data1$ethnicity <- factor(data1$ethnicity,levels=c("Cauc","AA","As","In","Other"))
-data1$sex <- factor(data1$sex, levels=c(0,1), labels=c("Male","Female"))
-data1$dx <- factor(data1$dx, levels=c(0,1), labels=c("Control","Case"))
+demo_df$age <- as.numeric(as.character(demo_df$age))
+demo_df$ethnicity <- factor(demo_df$ethnicity,levels=c("Cauc","AA","As","In","Other"))
+demo_df$sex <- factor(demo_df$sex, levels=c(0,1), labels=c("Male","Female"))
+demo_df$dx <- factor(demo_df$dx, levels=c(0,1), labels=c("Control","Case"))
 ```
 
 By indicating the levels of our factors, we have erased from R the memory that we once had values of
@@ -198,18 +198,18 @@ Remove missing:
 
 
 ```r
-data2[data2==""] <- NA
-data2[data2=="missing"] <- NA
-data2[data2=="9999"] <- NA
+cog_df[cog_df==""] <- NA
+cog_df[cog_df=="missing"] <- NA
+cog_df[cog_df=="9999"] <- NA
 ```
 
 Correctly format variables for analyses:
 
 
 ```r
-data2$cog1 <- as.numeric(as.character(data2$cog1))
-data2$cog2 <- as.numeric(as.character(data2$cog2))
-data2$cog3 <- as.numeric(as.character(data2$cog3))
+cog_df$cog1 <- as.numeric(as.character(cog_df$cog1))
+cog_df$cog2 <- as.numeric(as.character(cog_df$cog2))
+cog_df$cog3 <- as.numeric(as.character(cog_df$cog3))
 ```
 
 ---------
@@ -229,7 +229,7 @@ We are going to make use a package called `stringr`, which was built to help us 
 
 ```r
 library(stringr)
-data2$subject_ID <- str_replace(data2$subID,"subject","SUB_")
+cog_df$subject_ID <- str_replace(cog_df$subID,"subject","SUB_")
 ```
 
 We can then merge the two datasets by specifying their names (in order x,y) and then specifying which columns are to be used as the key to merging the two data frames (by.x and by.y):
@@ -237,32 +237,52 @@ We can then merge the two datasets by specifying their names (in order x,y) and 
 
 ```r
 library(dplyr)
-alldata <- inner_join(data1,data2,by="subject_ID")
+```
+
+```
+## 
+## Attaching package: 'dplyr'
+```
+
+```
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+```
+
+```
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+```
+
+```r
+alldata <- inner_join(demo_df,cog_df,by="subject_ID")
 ```
 
 Skipping ahead a little - now we can look at histograms of our numeric variables, just to see what we are dealing with:
 
 
 ```r
-hist(data2$cog1)
+hist(cog_df$cog1)
 ```
 
 <img src="01-import-your-data_files/figure-html/plot-first-histograms-1.png" width="672" />
 
 ```r
-hist(data2$cog2)
+hist(cog_df$cog2)
 ```
 
 <img src="01-import-your-data_files/figure-html/plot-first-histograms-2.png" width="672" />
 
 ```r
-hist(data2$cog3)
+hist(cog_df$cog3)
 ```
 
 <img src="01-import-your-data_files/figure-html/plot-first-histograms-3.png" width="672" />
 
 ```r
-hist(data1$age)
+hist(demo_df$age)
 ```
 
 <img src="01-import-your-data_files/figure-html/plot-first-histograms-4.png" width="672" />
@@ -378,6 +398,8 @@ t.test(cog1 ~ dx, data=alldata)
 ```
 
 ```r
+library(ggplot2)
+
 ggplot(alldata, aes(x=dx, y=cog1)) + geom_boxplot()
 ```
 
