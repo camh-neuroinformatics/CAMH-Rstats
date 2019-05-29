@@ -1,24 +1,22 @@
 # Importing Data into R
 
-
 ## Read in data
 
-
-The two datasets provided are as follows:
+The two datasets we will be using are:
 
 1. **messy_demographic.csv:**
   * 5 variables: 
-    + age, diagnosis (dx), ethnicity, sex, and subject identifier (subject_ID)
+    + subject identifier (subject_ID), age, sex, ethnicity, and diagnosis (dx) 
 
 2. **messy_cognitive.csv:**
   * 4 variables: 
-   +three cognitive scores (cog1, cog2, cog3), and subject identifier (subID)
+    + subject identifier (subID), and three cognitive scores (cog1, cog2, cog3) 
 
-In order to view and manipulate this data in R, we need to *import* the data into our R workspace (the same as you would open a file in excel to edit it).
+In order to view and manipulate this data in R, we need to *import* the data into our R workspace (the same as you would open a file in Excel to edit it).
 
 *Rstudio trick:*
 
-* Click on the __Environment__ Tab, then click on __Import Dataset__ --> __From text File__
+* Click on the `Environment` Tab, then click on `Import Dataset` --> `From Text File (readr)`
 * Navigate the browser window to the location of *messy_cognitive.csv* and click **Open**
 * This opens a text reader window: You see the raw text on the top and what R will read in (the data frame) at the bottom
 * In my view, it looks like the R is not going to read in the first line as a header..to change this
@@ -37,9 +35,9 @@ cog_df <- read_csv("~/Downloads/messy_cognitive.csv")
 
 
 
-* What you actually did was use the read.csv function... to find out more about this option you can type "?read.csv" in the Console
+* What you actually did was use the `read_csv` function... to find out more about this option you can type `?read_csv` in the Console
 * This is the basic syntax of R functions: some.function("stuff inside to do the function on")
-* The *help document* for the read.csv function is shown in the **Help** tab
+* The *help document* for the `read_csv` function is shown in the **Help** tab
 
 Now we have two **"data frames"** loaded into our workspace. They are called demo_df and cog_df.
 
@@ -47,9 +45,8 @@ Now we have two **"data frames"** loaded into our workspace. They are called dem
 
 ## Basic data summaries and visualization ( head, tail, describe() )
 
-
-+ Now that we have the data loaded, how do we just look at it? The simplest way is with the "View" function within rstudio.
-+ In Enviroment tab. Click on the little spreadsheet to teh far right of the demo_df.csv row... this shows you your data in what looks like a spreadsheet - but you cannot edit it!
++ Now that we have the data loaded, how do we just look at it? The simplest way is with the "View" function within RStudio.
++ In Enviroment tab, click on the little spreadsheet to the far right of the `demo_df` row. This shows you your data in what looks like a spreadsheet - but you cannot edit it!
 
 To look at the top six rows of your data:
 
@@ -89,8 +86,7 @@ tail(cog_df)
 ## 6 subject350 13.993297479479  28.3229119000634 11.2012255384154
 ```
 
-Using the function names() tells us what all the variables in our dataframe are called.
-
+Using the function `names()` tells us what all the variables in our dataframe are called.
 
 
 ```r
@@ -101,7 +97,7 @@ names(demo_df)
 ## [1] "subject_ID" "age"        "sex"        "ethnicity"  "dx"
 ```
 
-the ls() function does the same thing, except it returns the variables in alphabetical order
+the `ls()` function does the same thing, except it returns the variables in alphabetical order
 
 
 ```r
@@ -112,7 +108,7 @@ ls(demo_df)
 ## [1] "age"        "dx"         "ethnicity"  "sex"        "subject_ID"
 ```
 
-That was all nice, but we want to find out more about this data we can use "summary"
+That was all nice, but we want to find out more about this data we can use `summary()`
 
 
 ```r
@@ -157,9 +153,8 @@ summary(cog_df)
 
 ## Data cleaning
 
-
-* Now that you have looked at your data - you might have noticed that there are a couple probems
-The RA that you have been working with have coded missing values in three different ways ("9999", "missing",and "NA")
+* Now that you have looked at your data - you might have noticed that there are a couple problems
+The RA that you have been working with has coded missing values in three different ways ("9999", "missing", and "")
 * We first need to set these all to NA - which R recognizes as missing value:
 
 The following will take all values in demo_df that are equal to "", "missing", or "9999", and code them as missing in a way that R understands:
@@ -287,13 +282,11 @@ hist(demo_df$age)
 
 <img src="01-import-your-data_files/figure-html/plot-first-histograms-4.png" width="672" />
 
-
 Now that our data are loaded, cleaned, and merged, it is time to do some basic statistics!
 
 ---------
 
 ### STUDY QUESTION 1: What is the relationship between sex and diagnosis?
-
 
 **For this question, our null hypothesis is that there is no difference in the number of males and females between our case and control diagnosis groups**
 
@@ -355,7 +348,7 @@ fisher.test(dxXsex_table)
 ```
 
 *A bit more advanced!*
-This will accoplish the same thing as ftable(), except that here we are *indexing* our alldata dataframe with the R syntax [<row>,<column>]. the blank value for <row> tells R that we want all rows.
+This will accomplish the same thing as ftable(), except that here we are *indexing* our alldata dataframe with the R syntax [<row>,<column>]. the blank value for <row> tells R that we want all rows.
 The c("dx","sex") value for <columns> means we want to use the columns named "dx" and "sex". the table() function knows to arrange these as a 2 x 2 contingency table.
 
 
@@ -374,7 +367,6 @@ table(alldata[ ,c("dx","sex")])
 ---------
 
 ### STUDY QUESTION 2: What is the relationship between diagnosis and cog1?
-
 
 **for this question, our null hypothesis is that there is no difference in cog1 between our case and control diagnosis groups**
 
@@ -400,7 +392,8 @@ t.test(cog1 ~ dx, data=alldata)
 ```r
 library(ggplot2)
 
-ggplot(alldata, aes(x=dx, y=cog1)) + geom_boxplot()
+ggplot(alldata, aes(x=dx, y=cog1)) + 
+  geom_boxplot()
 ```
 
 ```
