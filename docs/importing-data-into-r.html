@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Importing Data into R | CAMH R-stats Workshops</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Importing Data into R | CAMH R-stats Workshops" />
   <meta property="og:type" content="book" />
@@ -22,14 +21,14 @@
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
 
-<meta name="author" content="Erin Dickie">
+<meta name="author" content="Erin Dickie" />
 
 
-<meta name="date" content="2018-11-15">
+<meta name="date" content="2019-05-29" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="index.html">
@@ -53,7 +52,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -66,11 +65,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -131,8 +132,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#rstudio-environment"><i class="fa fa-check"></i><b>1.1</b> RStudio environment</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#loading-libraries-installing-packages"><i class="fa fa-check"></i><b>1.2</b> Loading libraries / installing packages</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-software"><i class="fa fa-check"></i><b>1.1</b> Installing software</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#downloading-sample-data"><i class="fa fa-check"></i><b>1.2</b> Downloading sample data</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#rstudio-environment"><i class="fa fa-check"></i><b>1.3</b> RStudio environment</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#loading-libraries-installing-packages"><i class="fa fa-check"></i><b>1.4</b> Loading libraries / installing packages</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html"><i class="fa fa-check"></i><b>2</b> Importing Data into R</a><ul>
 <li class="chapter" data-level="2.1" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#read-in-data"><i class="fa fa-check"></i><b>2.1</b> Read in data</a></li>
@@ -217,14 +220,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 2</span> Importing Data into R</h1>
 <div id="read-in-data" class="section level2">
 <h2><span class="header-section-number">2.1</span> Read in data</h2>
-<p>The two datasets provided are as follows:</p>
+<p>The two datasets we will be using are:</p>
 <ol style="list-style-type: decimal">
 <li><strong>messy_demographic.csv:</strong></li>
 </ol>
 <ul>
 <li>5 variables:
 <ul>
-<li>age, diagnosis (dx), ethnicity, sex, and subject identifier (subject_ID)</li>
+<li>subject identifier (subject_ID), age, sex, ethnicity, and diagnosis (dx)</li>
 </ul></li>
 </ul>
 <ol start="2" style="list-style-type: decimal">
@@ -232,12 +235,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <ul>
 <li>4 variables:
-+three cognitive scores (cog1, cog2, cog3), and subject identifier (subID)</li>
+<ul>
+<li>subject identifier (subID), and three cognitive scores (cog1, cog2, cog3)</li>
+</ul></li>
 </ul>
-<p>In order to view and manipulate this data in R, we need to <em>import</em> the data into our R workspace (the same as you would open a file in excel to edit it).</p>
+<p>In order to view and manipulate this data in R, we need to <em>import</em> the data into our R workspace (the same as you would open a file in Excel to edit it).</p>
 <p><em>Rstudio trick:</em></p>
 <ul>
-<li>Click on the <strong>Environment</strong> Tab, then click on <strong>Import Dataset</strong> –&gt; <strong>From text File</strong></li>
+<li>Click on the <code>Environment</code> Tab, then click on <code>Import Dataset</code> –&gt; <code>From Text File (readr)</code></li>
 <li>Navigate the browser window to the location of <em>messy_cognitive.csv</em> and click <strong>Open</strong></li>
 <li>This opens a text reader window: You see the raw text on the top and what R will read in (the data frame) at the bottom</li>
 <li>In my view, it looks like the R is not going to read in the first line as a header..to change this</li>
@@ -251,9 +256,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 demo_df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Downloads/messy_demographic.csv&quot;</span>)
 cog_df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Downloads/messy_cognitive.csv&quot;</span>)</code></pre>
 <ul>
-<li>What you actually did was use the read.csv function… to find out more about this option you can type “?read.csv” in the Console</li>
+<li>What you actually did was use the <code>read_csv</code> function… to find out more about this option you can type <code>?read_csv</code> in the Console</li>
 <li>This is the basic syntax of R functions: some.function(“stuff inside to do the function on”)</li>
-<li>The <em>help document</em> for the read.csv function is shown in the <strong>Help</strong> tab</li>
+<li>The <em>help document</em> for the <code>read_csv</code> function is shown in the <strong>Help</strong> tab</li>
 </ul>
 <p>Now we have two <strong>“data frames”</strong> loaded into our workspace. They are called demo_df and cog_df.</p>
 <hr />
@@ -261,14 +266,14 @@ cog_df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span clas
 <div id="basic-data-summaries-and-visualization-head-tail-describe" class="section level2">
 <h2><span class="header-section-number">2.2</span> Basic data summaries and visualization ( head, tail, describe() )</h2>
 <ul>
-<li>Now that we have the data loaded, how do we just look at it? The simplest way is with the “View” function within rstudio.</li>
-<li>In Enviroment tab. Click on the little spreadsheet to teh far right of the demo_df.csv row… this shows you your data in what looks like a spreadsheet - but you cannot edit it!</li>
+<li>Now that we have the data loaded, how do we just look at it? The simplest way is with the “View” function within RStudio.</li>
+<li>In Enviroment tab, click on the little spreadsheet to the far right of the <code>demo_df</code> row. This shows you your data in what looks like a spreadsheet - but you cannot edit it!</li>
 </ul>
 <p>To look at the top six rows of your data:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(demo_df)</code></pre>
 <pre><code>## # A tibble: 6 x 5
 ##   subject_ID age     sex ethnicity dx   
-##   &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;
+##   &lt;chr&gt;      &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;
 ## 1 SUB_1      43        0 Cauc      0    
 ## 2 SUB_2      47        1 Cauc      1    
 ## 3 SUB_3      69        1 Cauc      1    
@@ -286,13 +291,13 @@ cog_df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span clas
 ## 4 subject348 11.1612493587292 30.8723352333704 16.0049438698844
 ## 5 subject349 15.3654440645612 29.7598065423247 44.3994545119479
 ## 6 subject350 13.993297479479  28.3229119000634 11.2012255384154</code></pre>
-<p>Using the function names() tells us what all the variables in our dataframe are called.</p>
+<p>Using the function <code>names()</code> tells us what all the variables in our dataframe are called.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(demo_df)</code></pre>
 <pre><code>## [1] &quot;subject_ID&quot; &quot;age&quot;        &quot;sex&quot;        &quot;ethnicity&quot;  &quot;dx&quot;</code></pre>
-<p>the ls() function does the same thing, except it returns the variables in alphabetical order</p>
+<p>the <code>ls()</code> function does the same thing, except it returns the variables in alphabetical order</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>(demo_df)</code></pre>
 <pre><code>## [1] &quot;age&quot;        &quot;dx&quot;         &quot;ethnicity&quot;  &quot;sex&quot;        &quot;subject_ID&quot;</code></pre>
-<p>That was all nice, but we want to find out more about this data we can use “summary”</p>
+<p>That was all nice, but we want to find out more about this data we can use <code>summary()</code></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(demo_df)</code></pre>
 <pre><code>##   subject_ID            age                 sex         
 ##  Length:350         Length:350         Min.   :   0.00  
@@ -324,8 +329,8 @@ cog_df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span clas
 <div id="data-cleaning" class="section level2">
 <h2><span class="header-section-number">2.3</span> Data cleaning</h2>
 <ul>
-<li>Now that you have looked at your data - you might have noticed that there are a couple probems
-The RA that you have been working with have coded missing values in three different ways (“9999”, “missing”,and “NA”)</li>
+<li>Now that you have looked at your data - you might have noticed that there are a couple problems
+The RA that you have been working with has coded missing values in three different ways (“9999”, “missing”, and &quot;&quot;)</li>
 <li>We first need to set these all to NA - which R recognizes as missing value:</li>
 </ul>
 <p>The following will take all values in demo_df that are equal to &quot;“,”missing“, or”9999&quot;, and code them as missing in a way that R understands:</p>
@@ -423,7 +428,7 @@ cog_df<span class="op">$</span>subject_ID &lt;-<span class="st"> </span><span cl
 ## odds ratio 
 ##   0.279488</code></pre>
 <p><em>A bit more advanced!</em>
-This will accoplish the same thing as ftable(), except that here we are <em>indexing</em> our alldata dataframe with the R syntax [<row>,<column>]. the blank value for <row> tells R that we want all rows.
+This will accomplish the same thing as ftable(), except that here we are <em>indexing</em> our alldata dataframe with the R syntax [<row>,<column>]. the blank value for <row> tells R that we want all rows.
 The c(“dx”,“sex”) value for <columns> means we want to use the columns named “dx” and “sex”. the table() function knows to arrange these as a 2 x 2 contingency table.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(alldata[ ,<span class="kw">c</span>(<span class="st">&quot;dx&quot;</span>,<span class="st">&quot;sex&quot;</span>)])</code></pre>
 <pre><code>##          sex
@@ -449,7 +454,8 @@ The c(“dx”,“sex”) value for <columns> means we want to use the columns n
 ##              9.940047             12.132079</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 
-<span class="kw">ggplot</span>(alldata, <span class="kw">aes</span>(<span class="dt">x=</span>dx, <span class="dt">y=</span>cog1)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre>
+<span class="kw">ggplot</span>(alldata, <span class="kw">aes</span>(<span class="dt">x=</span>dx, <span class="dt">y=</span>cog1)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre>
 <pre><code>## Warning: Removed 5 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="01-import-your-data_files/figure-html/first-t-t-test-1.png" width="672" /></p>
 <hr />

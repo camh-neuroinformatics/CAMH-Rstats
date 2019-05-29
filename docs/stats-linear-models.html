@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>CAMH R-stats Workshops</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Stats (Linear Models) | CAMH R-stats Workshops</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="CAMH R-stats Workshops" />
+  <meta property="og:title" content="Chapter 4 Stats (Linear Models) | CAMH R-stats Workshops" />
   <meta property="og:type" content="book" />
   
   
@@ -17,25 +16,26 @@
   <meta name="github-repo" content="camh-neuroinformatics/CAMH-Rstats" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="CAMH R-stats Workshops" />
+  <meta name="twitter:title" content="Chapter 4 Stats (Linear Models) | CAMH R-stats Workshops" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
 
-<meta name="author" content="Erin Dickie">
+<meta name="author" content="Erin Dickie" />
 
 
-<meta name="date" content="2018-11-15">
+<meta name="date" content="2019-05-29" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="explore-data-with-r.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -50,41 +50,69 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -104,8 +132,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#rstudio-environment"><i class="fa fa-check"></i><b>1.1</b> RStudio environment</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#loading-libraries-installing-packages"><i class="fa fa-check"></i><b>1.2</b> Loading libraries / installing packages</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-software"><i class="fa fa-check"></i><b>1.1</b> Installing software</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#downloading-sample-data"><i class="fa fa-check"></i><b>1.2</b> Downloading sample data</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#rstudio-environment"><i class="fa fa-check"></i><b>1.3</b> RStudio environment</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#loading-libraries-installing-packages"><i class="fa fa-check"></i><b>1.4</b> Loading libraries / installing packages</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#cheat-sheets"><i class="fa fa-check"></i><b>1.5</b> Cheat Sheets</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html"><i class="fa fa-check"></i><b>2</b> Importing Data into R</a><ul>
 <li class="chapter" data-level="2.1" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#read-in-data"><i class="fa fa-check"></i><b>2.1</b> Read in data</a></li>
@@ -195,31 +226,33 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="data/messy_genotype.csv">messy_genotype.csv</a></li>
 </ol>
 <hr />
-<p>We need ‘rms’, ‘ggplot2’, and ‘car’ packages If you haven’t already installed these:</p>
+<p>We need ‘rms’, ‘ggplot2’, and ‘car’ packages
+If you haven’t already installed these:</p>
 <p>Load the packages</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
 <span class="kw">library</span>(dplyr)
 <span class="kw">library</span>(tidyr)
 <span class="kw">library</span>(broom)
-<span class="kw">library</span>(readr)</code></pre></div>
+<span class="kw">library</span>(readr)</code></pre>
 <div id="p.s.-today-we-are-going-to-use-the-pipe" class="section level4">
 <h4><span class="header-section-number">4.0.0.1</span> p.s. today we are going to use the “pipe” <code>%&gt;%</code></h4>
-<p><code>%&gt;%</code> is the pipe The pipe takes the data from the left of if and feeds it to the function on the next line. Below are two ways for writing the same command.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(alldata, cog1<span class="op">:</span>cog3)
+<p><code>%&gt;%</code> is the pipe
+The pipe takes the data from the left of if and feeds it to the function on the next line. Below are two ways for writing the same command.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(alldata, cog1<span class="op">:</span>cog3)
 alldata <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">select</span>(cog1<span class="op">:</span>cog3)</code></pre></div>
+<span class="st">  </span><span class="kw">select</span>(cog1<span class="op">:</span>cog3)</code></pre>
 </div>
 <div id="set-up-running-intro-to-r-commands" class="section level2">
 <h2><span class="header-section-number">4.1</span> Set up (Running Intro to R commands)</h2>
 <p><em>Note: we’re going to use <code>read_csv()</code> from the <code>readr</code> package instead of base R’s read.csv because it is a little more robust.</em></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">messy_demographic &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Downloads/messy_demographic.csv&quot;</span>)  <span class="co"># put in the location of the downloaded data file 1</span>
+<pre class="sourceCode r"><code class="sourceCode r">messy_demographic &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Downloads/messy_demographic.csv&quot;</span>)  <span class="co"># put in the location of the downloaded data file 1</span>
 messy_cognitive &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Downloads/messy_cognitive.csv&quot;</span>)  <span class="co"># put in the location of the downloaded data file 2</span>
-data3 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Downloads/messy_genotype.csv&quot;</span>)</code></pre></div>
+data3 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Downloads/messy_genotype.csv&quot;</span>)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   subject_ID = col_character(),
 ##   age = col_character(),
-##   sex = col_integer(),
+##   sex = col_double(),
 ##   ethnicity = col_character(),
 ##   dx = col_character()
 ## )</code></pre>
@@ -235,8 +268,9 @@ data3 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class
 ##   subID = col_character(),
 ##   genotype = col_character()
 ## )</code></pre>
-<p>The data should be merged and ready to go from day 1. If not, here’s the code for it: Copied from <a href="https://camh-scwg.github.io/compucool-may-2017/workshops/stats_with_R">here</a></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## I&#39;m using require, it&#39;s actually pretty much the same thing as &quot;library&quot;
+<p>The data should be merged and ready to go from day 1. If not, here’s the code for it:
+Copied from <a href="https://camh-scwg.github.io/compucool-may-2017/workshops/stats_with_R">here</a></p>
+<pre class="sourceCode r"><code class="sourceCode r">## I&#39;m using require, it&#39;s actually pretty much the same thing as &quot;library&quot;
 <span class="kw">require</span>(dplyr)
 <span class="kw">require</span>(stringr)
 <span class="kw">require</span>(readr)
@@ -265,8 +299,17 @@ clean_demographic &lt;-<span class="st"> </span>messy_demographic <span class="o
 ## then I use dplyr mutate_at to convert all 3 cog vars to a number
 clean_cognitive &lt;-<span class="st"> </span>messy_cognitive <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">recode_missing</span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(cog1<span class="op">:</span>cog3), <span class="kw">funs</span>(<span class="kw">parse_number</span>(.)))
-## recode and set genotype to a factor
+<span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(cog1<span class="op">:</span>cog3), <span class="kw">funs</span>(<span class="kw">parse_number</span>(.)))</code></pre>
+<pre><code>## Warning: funs() is soft deprecated as of dplyr 0.8.0
+## please use list() instead
+## 
+##   # Before:
+##   funs(name = f(.))
+## 
+##   # After: 
+##   list(name = ~ f(.))
+## This warning is displayed once per session.</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">## recode and set genotype to a factor
 clean_genotype &lt;-<span class="st"> </span>messy_genotype <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">recode_missing</span>() <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">genotype =</span> <span class="kw">factor</span>(genotype, 
@@ -282,7 +325,7 @@ alldata &lt;-<span class="st"> </span>clean_demographic <span class="op">%&gt;%<
 <span class="st">  </span><span class="kw">select</span>(subID, <span class="kw">everything</span>(), <span class="op">-</span>subject_ID)
 ## remove the intermediate data from your workspace
 <span class="kw">rm</span>(messy_demographic, messy_cognitive, messy_genotype,
-   clean_genotype, clean_cognitive, clean_demographic)</code></pre></div>
+   clean_genotype, clean_cognitive, clean_demographic)</code></pre>
 </div>
 <div id="a-very-fast-stats-refresher" class="section level2">
 <h2><span class="header-section-number">4.2</span> A very fast stats refresher!!</h2>
@@ -296,9 +339,9 @@ alldata &lt;-<span class="st"> </span>clean_demographic <span class="op">%&gt;%<
 <table>
 <colgroup>
 <col width="20%" />
-<col width="11%" />
+<col width="10%" />
 <col width="37%" />
-<col width="30%" />
+<col width="31%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -359,8 +402,8 @@ alldata &lt;-<span class="st"> </span>clean_demographic <span class="op">%&gt;%<
 <p>The linear model function in R (<code>lm</code>), like many stats functions in R, uses <em>formula notation</em>, where you describe you dependant and independant variables, separated by a tilda <code>~</code>.</p>
 <p>Let’s take an example where we want to predict the scores on cognitive scale 2 using our age variable.</p>
 <p>In the next chuck we create a <em>linear model fit</em> object. An then call summary on that object.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit_cog2_age &lt;-<span class="kw">lm</span>(cog2 <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> alldata) <span class="co"># creates lm &quot;fit&quot; object</span>
-<span class="kw">summary</span>(fit_cog2_age)                         <span class="co"># prints a summary report of the fit</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">fit_cog2_age &lt;-<span class="kw">lm</span>(cog2 <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> alldata) <span class="co"># creates lm &quot;fit&quot; object</span>
+<span class="kw">summary</span>(fit_cog2_age)                         <span class="co"># prints a summary report of the fit</span></code></pre>
 <pre><code>## 
 ## Call:
 ## lm(formula = cog2 ~ age, data = alldata)
@@ -387,59 +430,61 @@ alldata &lt;-<span class="st"> </span>clean_demographic <span class="op">%&gt;%<
 <p>Statistical result objects can be tough to work with. The <code>broom</code> package extract numbers from statistical fit results into dataframes that are easier to work with.</p>
 <div id="augment-grabs-residuals-and-predicted-values" class="section level3">
 <h3><span class="header-section-number">4.4.1</span> <code>augment</code> grabs residuals and predicted values</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cogbyage_aug &lt;-<span class="st"> </span>alldata <span class="op">%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r">cogbyage_aug &lt;-<span class="st"> </span>alldata <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">do</span>(<span class="kw">augment</span>(<span class="kw">lm</span>(cog2<span class="op">~</span>age,<span class="dt">data =</span> .)))
-<span class="kw">head</span>(cogbyage_aug)</code></pre></div>
-<pre><code>##   .rownames     cog2 age  .fitted   .se.fit      .resid        .hat
-## 1         1 28.82050  43 30.03823 0.1922539 -1.21773373 0.004255104
-## 2         2 37.46947  47 30.89260 0.1680257  6.57687558 0.003250207
-## 3         3 37.72990  69 35.59159 0.3051575  2.13831656 0.010720322
-## 4         4 31.66686  51 31.74696 0.1606849 -0.08009890 0.002972417
-## 5         5 31.41426  52 31.96055 0.1618742 -0.54629124 0.003016580
-## 6         6 36.05572  71 36.01877 0.3293842  0.03695909 0.012490085
-##     .sigma      .cooksd  .std.resid
-## 1 2.950925 3.663098e-04 -0.41405515
-## 2 2.929588 8.145312e-03  2.23514884
-## 3 2.949335 2.882992e-03  0.72944467
-## 4 2.951677 1.104278e-06 -0.02721779
-## 5 2.951528 5.213355e-05 -0.18563513
-## 6 2.951679 1.007059e-06  0.01261916</code></pre>
+<span class="kw">head</span>(cogbyage_aug)</code></pre>
+<pre><code>## # A tibble: 6 x 10
+##   .rownames  cog2   age .fitted .se.fit  .resid    .hat .sigma .cooksd
+##   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+## 1 1          28.8    43    30.0   0.192 -1.22   0.00426   2.95 3.66e-4
+## 2 2          37.5    47    30.9   0.168  6.58   0.00325   2.93 8.15e-3
+## 3 3          37.7    69    35.6   0.305  2.14   0.0107    2.95 2.88e-3
+## 4 4          31.7    51    31.7   0.161 -0.0801 0.00297   2.95 1.10e-6
+## 5 5          31.4    52    32.0   0.162 -0.546  0.00302   2.95 5.21e-5
+## 6 6          36.1    71    36.0   0.329  0.0370 0.0125    2.95 1.01e-6
+## # … with 1 more variable: .std.resid &lt;dbl&gt;</code></pre>
 </div>
 <div id="tidy-grabs-to-middle-table-betas-and-t-stats" class="section level3">
 <h3><span class="header-section-number">4.4.2</span> <code>tidy</code> grabs to middle table (beta’s and t-stats)</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cogbyage_tidy &lt;-<span class="st"> </span>alldata <span class="op">%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r">cogbyage_tidy &lt;-<span class="st"> </span>alldata <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">do</span>(<span class="kw">tidy</span>(<span class="kw">lm</span>(cog2<span class="op">~</span>age,<span class="dt">data =</span> .)))
-cogbyage_tidy</code></pre></div>
-<pre><code>##          term   estimate  std.error statistic      p.value
-## 1 (Intercept) 20.8538467 0.72779789  28.65335 4.088251e-92
-## 2         age  0.2135904 0.01404897  15.20328 4.592760e-40</code></pre>
+cogbyage_tidy</code></pre>
+<pre><code>## # A tibble: 2 x 5
+##   term        estimate std.error statistic  p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 (Intercept)   20.9      0.728       28.7 4.09e-92
+## 2 age            0.214    0.0140      15.2 4.59e-40</code></pre>
 </div>
 <div id="glance-grabs-to-full-model-stats" class="section level3">
 <h3><span class="header-section-number">4.4.3</span> <code>glance</code> grabs to full model stats</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cogbyage_glance &lt;-<span class="st"> </span>alldata <span class="op">%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r">cogbyage_glance &lt;-<span class="st"> </span>alldata <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">do</span>(<span class="kw">glance</span>(<span class="kw">lm</span>(cog2<span class="op">~</span>age,<span class="dt">data =</span> .)))
-cogbyage_glance</code></pre></div>
-<pre><code>##   r.squared adj.r.squared    sigma statistic     p.value df    logLik
-## 1 0.4082732     0.4065069 2.947271  231.1397 4.59276e-40  2 -841.4358
-##        AIC      BIC deviance df.residual
-## 1 1688.872 1700.332 2909.947         335</code></pre>
+cogbyage_glance</code></pre>
+<pre><code>## # A tibble: 1 x 11
+##   r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     0.408         0.407  2.95      231. 4.59e-40     2  -841. 1689. 1700.
+## # … with 2 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;</code></pre>
 </div>
 </div>
 <div id="example-printing-our-formatted-t" class="section level2">
 <h2><span class="header-section-number">4.5</span> Example: printing our formatted t</h2>
 <div id="now-that-things-are-nicely-organized-we-can-built-tables-for-our-publications-compare-across-models-and-print-results-to-our-report" class="section level3">
 <h3><span class="header-section-number">4.5.1</span> now that things are nicely organized we can built tables for our publications, compare across models, and print results to our report</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_t_stat &lt;-<span class="st"> </span>cogbyage_tidy <span class="op">%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r">my_t_stat &lt;-<span class="st"> </span>cogbyage_tidy <span class="op">%&gt;%</span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">filter</span>(term <span class="op">==</span><span class="st"> &quot;age&quot;</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">select</span>(statistic) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">round</span>(.,<span class="dv">2</span>) ## round to 2 decimal places
-<span class="kw">print</span>(my_t_stat)</code></pre></div>
-<pre><code>##   statistic
+<span class="kw">print</span>(my_t_stat)</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##   statistic
+##       &lt;dbl&gt;
 ## 1      15.2</code></pre>
 </div>
 <div id="printing-a-result-to-our-report" class="section level3">
 <h3><span class="header-section-number">4.5.2</span> Printing a result to our report</h3>
-<p>The following line: We observe a significant relationship between age adn cognitive scale 2 (t = 15.2, p = 4.592759910^{-40})</p>
+<p>The following line:
+We observe a significant relationship between age adn cognitive scale 2 (t = 15.2, p = 4.592759910^{-40})</p>
 <p>was written in markdown as:</p>
 <pre><code>We observe a significant relationship between age adn cognitive scale 2 (t = 15.2, p = 4.5927599\times 10^{-40})</code></pre>
 </div>
@@ -448,19 +493,19 @@ cogbyage_glance</code></pre></div>
 <h2><span class="header-section-number">4.6</span> plotting distributions</h2>
 <div id="using-ggplot-to-plot-a-histogram-of-cognition-score-1" class="section level3">
 <h3><span class="header-section-number">4.6.1</span> Using ggplot to plot a histogram of cognition score 1</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(alldata, <span class="kw">aes</span>(<span class="dt">x=</span>cog1)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>()</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(alldata, <span class="kw">aes</span>(<span class="dt">x=</span>cog1)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>()</code></pre>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <pre><code>## Warning: Removed 5 rows containing non-finite values (stat_bin).</code></pre>
 <p><img src="03-linear-models_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 <div id="using-a-combination-of-gather-and-ggplot-to-plot-all-three-scores-in-one-plot" class="section level3">
 <h3><span class="header-section-number">4.6.2</span> Using a combination of “gather” and ggplot to plot all three scores in one plot</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alldata <span class="op">%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r">alldata <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">gather</span>(cognitive_scale, cognitive_score, 
          cog1<span class="op">:</span>cog3) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cognitive_score)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_histogram</span>() <span class="op">+</span>
-<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>cognitive_scale, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</code></pre></div>
+<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>cognitive_scale, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</code></pre>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <pre><code>## Warning: Removed 19 rows containing non-finite values (stat_bin).</code></pre>
 <p><img src="03-linear-models_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
@@ -471,16 +516,16 @@ cogbyage_glance</code></pre></div>
 <p>From the histogram above.. It looks like <code>cog3</code> is not normally distributed. This is a problem because it violates “the assumption of normally”, and therefore parametric tests (i.e. the linear model) should not be run in this case.</p>
 <p>One solution to this problem is to transform this variable into normally distributed variables, and then do the stats on those.</p>
 <p>Let’s use <code>dplyr</code>’s <code>mutate</code> function to calculate a log (i.e. log10) and square-root transform (<code>sqrt</code>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alldata &lt;-<span class="st"> </span>alldata <span class="op">%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r">alldata &lt;-<span class="st"> </span>alldata <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cog3_log  =</span> <span class="kw">log</span>(cog3),
-         <span class="dt">cog3_sqrt =</span> <span class="kw">sqrt</span>(cog3))</code></pre></div>
+         <span class="dt">cog3_sqrt =</span> <span class="kw">sqrt</span>(cog3))</code></pre>
 <p>Let’s plot histograms of these new values</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alldata <span class="op">%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r">alldata <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">gather</span>(cognitive_scale, cognitive_score, 
          cog3_log, cog3_sqrt) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cognitive_score)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_histogram</span>() <span class="op">+</span>
-<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>cognitive_scale, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</code></pre></div>
+<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>cognitive_scale, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</code></pre>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <pre><code>## Warning: Removed 18 rows containing non-finite values (stat_bin).</code></pre>
 <p><img src="03-linear-models_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
@@ -489,7 +534,7 @@ cogbyage_glance</code></pre></div>
 <h2><span class="header-section-number">4.8</span> Using “power transform” from the <code>car</code> library</h2>
 <p>The people behind the <code>car</code> library decided to use their computer’s to find the perfect transform!</p>
 <p>The function <code>powerTransform</code> magically finds the perfect transform!</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(car)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(car)</code></pre>
 <pre><code>## Loading required package: carData</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;car&#39;</code></pre>
@@ -499,12 +544,12 @@ cogbyage_glance</code></pre></div>
 <pre><code>## The following object is masked from &#39;package:purrr&#39;:
 ## 
 ##     some</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calculate the best exponent using powerTransform:</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calculate the best exponent using powerTransform:</span>
 pT &lt;-<span class="st"> </span><span class="kw">powerTransform</span>(alldata<span class="op">$</span>cog3)
 <span class="co"># apply the power transform and save the result to a new variable</span>
-alldata<span class="op">$</span>cog3_powerT &lt;-<span class="st"> </span>alldata<span class="op">$</span>cog3<span class="op">^</span>pT<span class="op">$</span>lambda ## note ^ is exponent in r</code></pre></div>
+alldata<span class="op">$</span>cog3_powerT &lt;-<span class="st"> </span>alldata<span class="op">$</span>cog3<span class="op">^</span>pT<span class="op">$</span>lambda ## note ^ is exponent in r</code></pre>
 <p>Using <code>powerTransform</code> is a little tricky (it requires two steps). When things get tricky in R, it’s nice to wrap what you want to do inside a function. That way, you can call the function instead of remembering all the steps next time you want to do something!</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## run the power transform, return the transformed variable
+<pre class="sourceCode r"><code class="sourceCode r">## run the power transform, return the transformed variable
 ## where x is a vector of values
 get_pT &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
  pT &lt;-<span class="st"> </span>x<span class="op">^</span><span class="kw">powerTransform</span>(x)<span class="op">$</span>lambda
@@ -512,22 +557,22 @@ get_pT &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
 }
 alldata &lt;-<span class="st"> </span>alldata <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cog3_pT =</span> <span class="kw">get_pT</span>(cog3))
-<span class="kw">ggplot</span>(alldata, <span class="kw">aes</span>(<span class="dt">x=</span>cog3_pT)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>()</code></pre></div>
+<span class="kw">ggplot</span>(alldata, <span class="kw">aes</span>(<span class="dt">x=</span>cog3_pT)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>()</code></pre>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <pre><code>## Warning: Removed 9 rows containing non-finite values (stat_bin).</code></pre>
 <p><img src="03-linear-models_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 </div>
 <div id="recodeding-our-genotype-into-risk-allele-carriers-vs-non-carriers" class="section level2">
 <h2><span class="header-section-number">4.9</span> Recodeding our genotype into risk-allele carriers vs non-carriers</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(alldata<span class="op">$</span>genotype)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(alldata<span class="op">$</span>genotype)</code></pre>
 <pre><code>##   AA   AG   GG NA&#39;s 
 ##  103  145   94    8</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(forcats)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(forcats)
 alldata &lt;-<span class="st"> </span>alldata <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">risk_carrier =</span> <span class="kw">fct_recode</span>(genotype,
                                    <span class="dt">carrier =</span> <span class="st">&quot;GG&quot;</span>,
                                    <span class="dt">carrier =</span> <span class="st">&quot;AG&quot;</span>,
-                                   <span class="dt">non_carrier =</span> <span class="st">&quot;AA&quot;</span>))</code></pre></div>
+                                   <span class="dt">non_carrier =</span> <span class="st">&quot;AA&quot;</span>))</code></pre>
 </div>
 <div id="investigating-interactions" class="section level2">
 <h2><span class="header-section-number">4.10</span> Investigating Interactions</h2>
@@ -535,8 +580,8 @@ alldata &lt;-<span class="st"> </span>alldata <span class="op">%&gt;%</span>
 <h3><span class="header-section-number">4.10.1</span> fitting our data with an age by risk-carrier interaction</h3>
 <p>The concept of statistical interaction goes by many names and has many definitions. Simply this is the concept that the effect of one variable changes depending on the value of another variable.</p>
 <p>Interaction is indicated in R formula syntax with a “:” or <code>*</code>, depending on if you want to automatically include the main effects of your interacting variables or not. As a general rule, always use <code>*</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit2 &lt;-<span class="st"> </span><span class="kw">lm</span>(cog1 <span class="op">~</span><span class="st"> </span>age<span class="op">*</span>risk_carrier, <span class="dt">data =</span> alldata)
-<span class="kw">summary</span>(fit2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">fit2 &lt;-<span class="st"> </span><span class="kw">lm</span>(cog1 <span class="op">~</span><span class="st"> </span>age<span class="op">*</span>risk_carrier, <span class="dt">data =</span> alldata)
+<span class="kw">summary</span>(fit2)</code></pre>
 <pre><code>## 
 ## Call:
 ## lm(formula = cog1 ~ age * risk_carrier, data = alldata)
@@ -558,32 +603,32 @@ alldata &lt;-<span class="st"> </span>alldata <span class="op">%&gt;%</span>
 ##   (20 observations deleted due to missingness)
 ## Multiple R-squared:  0.1272, Adjusted R-squared:  0.1191 
 ## F-statistic: 15.83 on 3 and 326 DF,  p-value: 1.234e-09</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alldata <span class="op">%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r">alldata <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">drop_na</span>(risk_carrier) <span class="op">%&gt;%</span>
 <span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> cog1, <span class="dt">color =</span> risk_carrier)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</code></pre></div>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</code></pre>
 <pre><code>## Warning: Removed 12 rows containing non-finite values (stat_smooth).</code></pre>
 <pre><code>## Warning: Removed 12 rows containing missing values (geom_point).</code></pre>
 <p><img src="03-linear-models_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 </div>
 <div id="plotting-all-three-cognitve-variables-at-once" class="section level3">
 <h3><span class="header-section-number">4.10.2</span> Plotting all three cognitve variables at once!</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alldata <span class="op">%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r">alldata <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">gather</span>(cognitive_scale, cognitive_score, 
          cog1, cog2, cog3_pT) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">drop_na</span>(risk_carrier) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">y =</span> cognitive_score, <span class="dt">x =</span> age, <span class="dt">color =</span> risk_carrier)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>cognitive_scale, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</code></pre></div>
+<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>cognitive_scale, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</code></pre>
 <pre><code>## Warning: Removed 40 rows containing non-finite values (stat_smooth).</code></pre>
 <pre><code>## Warning: Removed 40 rows containing missing values (geom_point).</code></pre>
 <p><img src="03-linear-models_files/figure-html/unnamed-chunk-21-1.png" width="960" /></p>
 </div>
 <div id="running-our-linear-model-on-all-three-cognitive-variables-at-once" class="section level3">
 <h3><span class="header-section-number">4.10.3</span> Running our linear model on all three cognitive variables at once!</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm_results &lt;-<span class="st"> </span>alldata <span class="op">%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r">lm_results &lt;-<span class="st"> </span>alldata <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">gather</span>(cognitive_scale, cognitive_score, 
          cog1, cog2, cog3_pT) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">drop_na</span>(risk_carrier) <span class="op">%&gt;%</span>
@@ -592,7 +637,7 @@ alldata &lt;-<span class="st"> </span>alldata <span class="op">%&gt;%</span>
 <span class="kw">library</span>(knitr)
 <span class="kw">kable</span>(lm_results <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">select</span>(cognitive_scale, term, statistic, p.value) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">arrange</span>(p.value))</code></pre></div>
+<span class="st">    </span><span class="kw">arrange</span>(p.value))</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -681,10 +726,10 @@ alldata &lt;-<span class="st"> </span>alldata <span class="op">%&gt;%</span>
 </div>
 <div id="use-p.adjust-to-correct-for-multiple-comparisons" class="section level2">
 <h2><span class="header-section-number">4.11</span> use p.adjust to correct for multiple comparisons</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">age_effects &lt;-<span class="st"> </span>lm_results <span class="op">%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r">age_effects &lt;-<span class="st"> </span>lm_results <span class="op">%&gt;%</span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw">filter</span>(term <span class="op">==</span><span class="st"> &quot;age&quot;</span>)
 age_effects<span class="op">$</span>p.FDR &lt;-<span class="st"> </span><span class="kw">p.adjust</span>(age_effects<span class="op">$</span>p.value, <span class="dt">method =</span> <span class="st">&quot;fdr&quot;</span>)
-<span class="kw">kable</span>(age_effects)</code></pre></div>
+<span class="kw">kable</span>(age_effects)</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -733,10 +778,11 @@ age_effects<span class="op">$</span>p.FDR &lt;-<span class="st"> </span><span cl
 <p>When you want more detailed info out of your models. The <code>rms</code> library can be very useful.</p>
 <div id="total_behaviour_score-age" class="section level4">
 <h4><span class="header-section-number">4.12.0.1</span> total_behaviour_score ~ age</h4>
-<p>Calculate a composite variable by combining multiple variables Note: new variables can be made easily (using dplyr’s mutate verb)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alldata<span class="op">$</span>totalcog &lt;-<span class="st"> </span>(alldata<span class="op">$</span>cog1 <span class="op">+</span><span class="st"> </span>alldata<span class="op">$</span>cog3) <span class="op">/</span><span class="st"> </span>alldata<span class="op">$</span>cog2</code></pre></div>
+<p>Calculate a composite variable by combining multiple variables
+Note: new variables can be made easily (using dplyr’s mutate verb)</p>
+<pre class="sourceCode r"><code class="sourceCode r">alldata<span class="op">$</span>totalcog &lt;-<span class="st"> </span>(alldata<span class="op">$</span>cog1 <span class="op">+</span><span class="st"> </span>alldata<span class="op">$</span>cog3) <span class="op">/</span><span class="st"> </span>alldata<span class="op">$</span>cog2</code></pre>
 <p>Simple linear regression (two ways: base package and rms)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rms)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rms)</code></pre>
 <pre><code>## Loading required package: Hmisc</code></pre>
 <pre><code>## Loading required package: lattice</code></pre>
 <pre><code>## Loading required package: survival</code></pre>
@@ -750,7 +796,6 @@ age_effects<span class="op">$</span>p.FDR &lt;-<span class="st"> </span><span cl
 ## 
 ##     format.pval, units</code></pre>
 <pre><code>## Loading required package: SparseM</code></pre>
-<pre><code>## Loading required package: methods</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;SparseM&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:base&#39;:
@@ -761,10 +806,10 @@ age_effects<span class="op">$</span>p.FDR &lt;-<span class="st"> </span><span cl
 <pre><code>## The following objects are masked from &#39;package:car&#39;:
 ## 
 ##     Predict, vif</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm.base &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data=</span>alldata, totalcog <span class="op">~</span><span class="st"> </span>age)
-lm.rms &lt;-<span class="st"> </span><span class="kw">ols</span>(<span class="dt">data=</span>alldata, totalcog <span class="op">~</span><span class="st"> </span>age)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">lm.base &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data=</span>alldata, totalcog <span class="op">~</span><span class="st"> </span>age)
+lm.rms &lt;-<span class="st"> </span><span class="kw">ols</span>(<span class="dt">data=</span>alldata, totalcog <span class="op">~</span><span class="st"> </span>age)</code></pre>
 <p>Let’s compare the output’s</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm.base</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">lm.base</code></pre>
 <pre><code>## 
 ## Call:
 ## lm(formula = totalcog ~ age, data = alldata)
@@ -772,7 +817,7 @@ lm.rms &lt;-<span class="st"> </span><span class="kw">ols</span>(<span class="dt
 ## Coefficients:
 ## (Intercept)          age  
 ##     1.78587     -0.01219</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(lm.base)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(lm.base)</code></pre>
 <pre><code>## 
 ## Call:
 ## lm(formula = totalcog ~ age, data = alldata)
@@ -792,7 +837,7 @@ lm.rms &lt;-<span class="st"> </span><span class="kw">ols</span>(<span class="dt
 ##   (26 observations deleted due to missingness)
 ## Multiple R-squared:  0.03961,    Adjusted R-squared:  0.03663 
 ## F-statistic: 13.28 on 1 and 322 DF,  p-value: 0.0003125</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(lm.base)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(lm.base)</code></pre>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: totalcog
@@ -802,9 +847,9 @@ lm.rms &lt;-<span class="st"> </span><span class="kw">ols</span>(<span class="dt
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p><strong>Note</strong>: to make the most out of rms package functionality, we need to store summary stats using the datadist() function. That way, when we call summary() on an ols() object (we just made one called “lm.rms”) it will give us useful info.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dd.alldata &lt;-<span class="st"> </span><span class="kw">datadist</span>(alldata)
+<pre class="sourceCode r"><code class="sourceCode r">dd.alldata &lt;-<span class="st"> </span><span class="kw">datadist</span>(alldata)
 <span class="kw">options</span>(<span class="dt">datadist=</span><span class="st">&quot;dd.alldata&quot;</span>)
-lm.rms</code></pre></div>
+lm.rms</code></pre>
 <pre><code>## Frequencies of Missing Values Due to Each Variable
 ## totalcog      age 
 ##       18        8 
@@ -830,12 +875,12 @@ lm.rms</code></pre></div>
 ##  Intercept  1.7859 0.1728 10.34 &lt;0.0001 
 ##  age       -0.0122 0.0033 -3.64 0.0003  
 ## </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(lm.rms)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(lm.rms)</code></pre>
 <pre><code>##              Effects              Response : totalcog 
 ## 
 ##  Factor Low High Diff. Effect   S.E.     Lower 0.95 Upper 0.95
 ##  age    43  58   15    -0.18288 0.050183 -0.28161   -0.084151</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(lm.rms)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(lm.rms)</code></pre>
 <pre><code>##                 Analysis of Variance          Response: totalcog 
 ## 
 ##  Factor     d.f. Partial SS MS        F     P    
@@ -843,15 +888,15 @@ lm.rms</code></pre></div>
 ##  REGRESSION   1    6.444638 6.4446382 13.28 3e-04
 ##  ERROR      322  156.258677 0.4852754</code></pre>
 <p>Visualize predicted results using rms</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">Predict</span>(lm.rms))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">Predict</span>(lm.rms))</code></pre>
 <p><img src="03-linear-models_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 </div>
 </div>
 <div id="ols-gets-more-powerful-as-the-model-gets-more-complicated" class="section level2">
 <h2><span class="header-section-number">4.13</span> ols gets more powerful as the model get’s more complicated</h2>
 <p>This is were we start to add covariates and do multiple regression</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm3 &lt;-<span class="st"> </span><span class="kw">ols</span>(<span class="dt">data=</span>alldata, cog1 <span class="op">~</span><span class="st"> </span>age<span class="op">*</span>risk_carrier <span class="op">+</span><span class="st"> </span>sex )
-lm3</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">lm3 &lt;-<span class="st"> </span><span class="kw">ols</span>(<span class="dt">data=</span>alldata, cog1 <span class="op">~</span><span class="st"> </span>age<span class="op">*</span>risk_carrier <span class="op">+</span><span class="st"> </span>sex )
+lm3</code></pre>
 <pre><code>## Frequencies of Missing Values Due to Each Variable
 ##         cog1          age risk_carrier          sex 
 ##            5            8            8            4 
@@ -880,7 +925,7 @@ lm3</code></pre></div>
 ##  sex=Female                 -0.8926 0.3636 -2.45 0.0146  
 ##  age * risk_carrier=carrier -0.1251 0.0349 -3.59 0.0004  
 ## </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(lm3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(lm3)</code></pre>
 <pre><code>##                 Analysis of Variance          Response: cog1 
 ## 
 ##  Factor                                            d.f. Partial SS
@@ -901,7 +946,7 @@ lm3</code></pre></div>
 ##  128.34287 12.86 0.0004
 ##  130.96145 13.13 &lt;.0001
 ##    9.97714</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(lm3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(lm3)</code></pre>
 <pre><code>##              Effects              Response : cog1 
 ## 
 ##  Factor                             Low High Diff. Effect   S.E.   
@@ -920,9 +965,9 @@ lm3</code></pre></div>
 <p><strong>How to visualize a significant effect from our regression…Controlling for the other variables in the model….</strong></p>
 <p>To visualize a given effect more informatively, we want to caculate the residuals of the model lacking our co-varitate of interest and plot those residuals as our outcome:</p>
 <p>For genotype we want a boxplot of model residuals:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm3.plot &lt;-<span class="st"> </span><span class="kw">ols</span>(<span class="dt">data=</span>alldata, cog1 <span class="op">~</span><span class="st"> </span>genotype <span class="op">+</span><span class="st"> </span>age)
+<pre class="sourceCode r"><code class="sourceCode r">lm3.plot &lt;-<span class="st"> </span><span class="kw">ols</span>(<span class="dt">data=</span>alldata, cog1 <span class="op">~</span><span class="st"> </span>genotype <span class="op">+</span><span class="st"> </span>age)
 <span class="kw">ggplot</span>(<span class="dt">data=</span>alldata, <span class="kw">aes</span>(<span class="dt">y=</span><span class="kw">resid</span>(lm3.plot), <span class="dt">x=</span>sex)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre>
 <pre><code>## Warning: Removed 20 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="03-linear-models_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 
@@ -954,7 +999,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -966,6 +1011,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/camh-neuroinformatics/CAMH-Rstats/edit/master/03-linear-models.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["CAMH-Rstats.pdf"],
 "toc": {

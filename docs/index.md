@@ -1,7 +1,7 @@
 --- 
 title: "CAMH R-stats Workshops"
 author: "Erin Dickie"
-date: "2019-05-28"
+date: "2019-05-29"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -85,3 +85,7 @@ install.packages(c("tidyverse", "rms", "tableone", "car"))
 + This moves the lines we just ran into our script so we can re-run this step tomorrow!
 
 --------
+
+## Cheat Sheets
+
+There are several [cheat sheets](https://www.rstudio.com/resources/cheatsheets/) available online that provide a quick reference when working with functions in the tidyverse.

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Explore Data with R | CAMH R-stats Workshops</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Explore Data with R | CAMH R-stats Workshops" />
   <meta property="og:type" content="book" />
@@ -22,14 +21,14 @@
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
 
-<meta name="author" content="Erin Dickie">
+<meta name="author" content="Erin Dickie" />
 
 
-<meta name="date" content="2019-05-28">
+<meta name="date" content="2019-05-29" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="importing-data-into-r.html">
@@ -53,7 +52,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -66,11 +65,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -131,8 +132,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#rstudio-environment"><i class="fa fa-check"></i><b>1.1</b> RStudio environment</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#loading-libraries-installing-packages"><i class="fa fa-check"></i><b>1.2</b> Loading libraries / installing packages</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-software"><i class="fa fa-check"></i><b>1.1</b> Installing software</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#downloading-sample-data"><i class="fa fa-check"></i><b>1.2</b> Downloading sample data</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#rstudio-environment"><i class="fa fa-check"></i><b>1.3</b> RStudio environment</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#loading-libraries-installing-packages"><i class="fa fa-check"></i><b>1.4</b> Loading libraries / installing packages</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#cheat-sheets"><i class="fa fa-check"></i><b>1.5</b> Cheat Sheets</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html"><i class="fa fa-check"></i><b>2</b> Importing Data into R</a><ul>
 <li class="chapter" data-level="2.1" data-path="importing-data-into-r.html"><a href="importing-data-into-r.html#read-in-data"><i class="fa fa-check"></i><b>2.1</b> Read in data</a></li>
@@ -239,12 +243,12 @@ Please download the following files:</p>
 <div id="the-packages-for-today" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> The packages for today</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
-<pre><code>## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
-## ✔ tibble  1.4.2     ✔ dplyr   0.7.8
-## ✔ tidyr   0.8.0     ✔ stringr 1.3.1
-## ✔ readr   1.1.1     ✔ forcats 0.3.0</code></pre>
-<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.1.1     ✔ purrr   0.3.2
+## ✔ tibble  2.1.1     ✔ dplyr   0.8.1
+## ✔ tidyr   0.8.3     ✔ stringr 1.4.0
+## ✔ readr   1.3.1     ✔ forcats 0.4.0</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 </div>
@@ -323,9 +327,8 @@ alldata &lt;-<span class="st"> </span>demo_df <span class="op">%&gt;%</span>
 + <strong>vars</strong>: the variables (from your data) to include in your table
 + <strong>factorVars</strong>: a list of which variables (in vars) should be treated as factors
 + <strong>strata</strong>: the name of a variable to split the table by.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tableone)</code></pre>
-<pre><code>## Warning: package &#39;tableone&#39; was built under R version 3.5.2</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">CreateTableOne</span>(alldata,
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tableone)
+<span class="kw">CreateTableOne</span>(alldata,
                <span class="dt">vars =</span> <span class="kw">c</span>(<span class="st">&quot;age&quot;</span>, <span class="st">&quot;sex&quot;</span>,
                         <span class="st">&quot;genotype&quot;</span>,<span class="st">&quot;ethnicity&quot;</span>,
                         <span class="st">&quot;cog1&quot;</span>, <span class="st">&quot;cog2&quot;</span>, <span class="st">&quot;cog3&quot;</span>),
@@ -428,8 +431,10 @@ my_ttest_result<span class="op">$</span>p.value</code></pre>
 <span class="st">  </span><span class="kw">group_by</span>(dx,genotype) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n_age =</span> <span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(age)), <span class="co">#the total number of observations that are NOT NA</span>
             <span class="dt">mean_age =</span> <span class="kw">mean</span>(age, <span class="dt">na.rm =</span> T),
-            <span class="dt">sd_age =</span> <span class="kw">sd</span>(age, <span class="dt">na.rm =</span> T))
-<span class="kw">library</span>(knitr)
+            <span class="dt">sd_age =</span> <span class="kw">sd</span>(age, <span class="dt">na.rm =</span> T))</code></pre>
+<pre><code>## Warning: Factor `genotype` contains implicit NA, consider using
+## `forcats::fct_explicit_na`</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)
 <span class="kw">kable</span>(table_<span class="dv">2</span>)</code></pre>
 <table>
 <thead>
@@ -559,19 +564,19 @@ alldata &lt;-<span class="st"> </span>alldata <span class="op">%&gt;%</span>
 alldata <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">gather</span>(cog_scale, cognitive_score, <span class="kw">starts_with</span>(<span class="st">&quot;cog&quot;</span>))</code></pre>
 <pre><code>## # A tibble: 1,050 x 9
-##    subject_ID   age sex    ethnicity dx    genotype risk_carrier cog_scale
-##    &lt;chr&gt;      &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt;        &lt;chr&gt;    
-##  1 SUB_1         43 Male   Cauc      Cont… GG       carrier      cog1     
-##  2 SUB_2         47 Female Cauc      Case  AG       carrier      cog1     
-##  3 SUB_3         69 Female Cauc      Case  AA       non_carrier  cog1     
-##  4 SUB_4         51 Male   Cauc      Case  GG       carrier      cog1     
-##  5 SUB_5         52 Female Cauc      Cont… AA       non_carrier  cog1     
-##  6 SUB_6         71 Male   AA        Case  AA       non_carrier  cog1     
-##  7 SUB_7         56 Female Cauc      Case  AA       non_carrier  cog1     
-##  8 SUB_8         35 Female &lt;NA&gt;      Cont… GG       carrier      cog1     
-##  9 SUB_9         42 Female Cauc      Cont… AG       carrier      cog1     
-## 10 SUB_10        45 Female Other     Case  &lt;NA&gt;     &lt;NA&gt;         cog1     
-## # ... with 1,040 more rows, and 1 more variable: cognitive_score &lt;dbl&gt;</code></pre>
+##    subject_ID   age sex   ethnicity dx    genotype risk_carrier cog_scale
+##    &lt;chr&gt;      &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;    &lt;fct&gt;        &lt;chr&gt;    
+##  1 SUB_1         43 Male  Cauc      Cont… GG       carrier      cog1     
+##  2 SUB_2         47 Fema… Cauc      Case  AG       carrier      cog1     
+##  3 SUB_3         69 Fema… Cauc      Case  AA       non_carrier  cog1     
+##  4 SUB_4         51 Male  Cauc      Case  GG       carrier      cog1     
+##  5 SUB_5         52 Fema… Cauc      Cont… AA       non_carrier  cog1     
+##  6 SUB_6         71 Male  AA        Case  AA       non_carrier  cog1     
+##  7 SUB_7         56 Fema… Cauc      Case  AA       non_carrier  cog1     
+##  8 SUB_8         35 Fema… &lt;NA&gt;      Cont… GG       carrier      cog1     
+##  9 SUB_9         42 Fema… Cauc      Cont… AG       carrier      cog1     
+## 10 SUB_10        45 Fema… Other     Case  &lt;NA&gt;     &lt;NA&gt;         cog1     
+## # … with 1,040 more rows, and 1 more variable: cognitive_score &lt;dbl&gt;</code></pre>
 <p>The beauty of gather is that it can be combined with other the rest of the tidyverse using the pipe. Let’s feed out gathered result to ggplot.</p>
 <p><em>Note:</em> using <code>scales = &quot;free&quot;</code> when faceting will force ggplot to draw a separate axis for each subplot (by default, <code>scales = &quot;fixed&quot;</code>, meaning that the same axes are drawn for each plot).</p>
 <pre class="sourceCode r"><code class="sourceCode r">alldata <span class="op">%&gt;%</span>
